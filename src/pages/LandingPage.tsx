@@ -15,6 +15,7 @@ import {
   MessageSquare,
   Video,
 } from 'lucide-react';
+import { BrandLogo } from '../components/common/BrandLogo';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -77,21 +78,7 @@ export default function LandingPage() {
       {/* Top Navigation Bar */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-blue-900 to-emerald-600 p-[2px] flex items-center justify-center flex-shrink-0 shadow-sm">
-              <div className="w-full h-full bg-white rounded-[8px] flex items-center justify-center">
-                <span className="text-lg">🇮🇳</span>
-              </div>
-            </div>
-            <div>
-              <span className="font-extrabold text-sm tracking-wider text-slate-900 block leading-tight">
-                SOCIALPULSE <span className="text-orange-600">BHARAT</span>
-              </span>
-              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">
-                National Social Intelligence Grid
-              </span>
-            </div>
-          </div>
+          <BrandLogo size="md" />
 
           <nav className="hidden md:flex items-center gap-8 text-xs font-bold text-slate-600 uppercase tracking-wide">
             <a href="#features" className="hover:text-orange-600 transition">Intelligence Modules</a>
@@ -447,12 +434,8 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 font-medium">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">🇮🇳</span>
-            <span className="font-extrabold text-slate-900">SOCIALPULSE BHARAT</span>
-            <span>— Smart India Hackathon 2026</span>
-          </div>
-          <div>National Social Media Intelligence Grid • Real-time Stream Normalization</div>
+          <BrandLogo size="sm" />
+          <div>National Autonomous AI Framework • Real-time Stream Normalization</div>
         </div>
       </footer>
     </div>

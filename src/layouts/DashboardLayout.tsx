@@ -23,6 +23,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { PLATFORM_FILTERS } from '../mocks/indiaMapData';
+import { BrandLogo } from '../components/common/BrandLogo';
 
 // ─── Platform Context ─────────────────────────────────────────────────────────
 export const PlatformContext = createContext<{
@@ -101,24 +102,9 @@ export default function DashboardLayout() {
       {/* Logo */}
       <Link
         to="/"
-        className="flex items-center gap-3 px-4 py-4 border-b border-slate-100 hover:bg-orange-50/40 transition"
+        className="flex items-center px-3.5 py-4 border-b border-slate-100 hover:bg-orange-50/40 transition"
       >
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm overflow-hidden"
-          style={{ background: 'linear-gradient(135deg,#ff671f 0%,#002d62 50%,#046a38 100%)' }}
-        >
-          <span className="text-lg">🇮🇳</span>
-        </div>
-        {sidebarOpen && (
-          <div className="flex flex-col">
-            <span className="font-extrabold text-xs tracking-wider text-slate-900 leading-tight">
-              SOCIALPULSE <span className="text-orange-600">BHARAT</span>
-            </span>
-            <span className="text-[10px] font-semibold text-slate-400 tracking-wide uppercase mt-0.5">
-              National Intelligence Grid
-            </span>
-          </div>
-        )}
+        <BrandLogo size="md" showText={sidebarOpen} />
       </Link>
 
       {/* Nav */}
