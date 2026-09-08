@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import { Outlet, NavLink, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   LayoutDashboard,
@@ -66,7 +66,7 @@ export default function DashboardLayout() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="flex items-center gap-2 px-4 py-5 border-b border-white/5">
+      <Link to="/" className="flex items-center gap-2 px-4 py-5 border-b border-white/5 hover:opacity-90 transition">
         <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-purple-500 flex items-center justify-center">
           <Activity className="w-4 h-4 text-white" />
         </div>
@@ -79,7 +79,7 @@ export default function DashboardLayout() {
             SOCIALPULSE AI
           </motion.span>
         )}
-      </div>
+      </Link>
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto py-4 px-2">

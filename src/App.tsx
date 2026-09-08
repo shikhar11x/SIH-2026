@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLayout from './layouts/DashboardLayout';
+import LandingPage from './pages/LandingPage';
 import OverviewPage from './pages/OverviewPage';
 import PlatformsPage from './pages/PlatformsPage';
 import DataIngestionPage from './pages/DataIngestionPage';
@@ -18,8 +19,13 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Landing Page opens first at root URL */}
+        <Route path="/" element={<LandingPage />} />
+
+        {/* Dashboard application routes */}
         <Route element={<DashboardLayout />}>
-          <Route path="/" element={<Navigate to="/analysis/overview" replace />} />
+          <Route path="/dashboard" element={<Navigate to="/analysis/overview" replace />} />
+          <Route path="/app" element={<Navigate to="/analysis/overview" replace />} />
           <Route path="/platforms" element={<PlatformsPage />} />
           <Route path="/data" element={<DataIngestionPage />} />
           <Route path="/analysis/overview" element={<OverviewPage />} />
@@ -33,6 +39,9 @@ export default function App() {
           <Route path="/copilot" element={<CopilotPage />} />
           <Route path="/reports" element={<ReportsPage />} />
         </Route>
+
+        {/* Catch-all redirect to Landing page */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
