@@ -38,30 +38,30 @@ interface NavItem { label: string; to: string; icon: React.ElementType }
 
 const mainNav: { section: string; items: NavItem[] }[] = [
   {
-    section: 'ANALYTICS',
+    section: 'MAIN OVERVIEW',
     items: [
-      { label: 'Overview Dashboard', to: '/analysis/overview', icon: LayoutDashboard },
-      { label: 'Sentiment Analysis', to: '/analysis/sentiment', icon: Heart },
-      { label: 'Demographics', to: '/analysis/demographics', icon: Users },
-      { label: 'Trend Radar', to: '/analysis/trends', icon: TrendingUp },
-      { label: 'Network & Links', to: '/analysis/network', icon: Network },
+      { label: 'National Dashboard', to: '/analysis/overview', icon: LayoutDashboard },
+      { label: 'Public Mood (Sentiment)', to: '/analysis/sentiment', icon: Heart },
+      { label: 'Who\'s Talking', to: '/analysis/demographics', icon: Users },
+      { label: 'Trending Topics', to: '/analysis/trends', icon: TrendingUp },
+      { label: 'Viral Networks', to: '/analysis/network', icon: Network },
     ],
   },
   {
-    section: 'INTELLIGENCE',
+    section: 'DATA & FEEDS',
     items: [
-      { label: 'Data Streams', to: '/data', icon: Database },
-      { label: 'Platform Hub', to: '/platforms', icon: Globe },
-      { label: 'Info Flow', to: '/analysis/flow', icon: Workflow },
-      { label: 'Timeline', to: '/analysis/timeline', icon: Clock },
-      { label: 'Cross-Platform', to: '/cross-platform', icon: Layers },
+      { label: 'Live Data Feeds', to: '/data', icon: Database },
+      { label: 'All Platforms View', to: '/platforms', icon: Globe },
+      { label: 'How News Spreads', to: '/analysis/flow', icon: Workflow },
+      { label: 'Timeline View', to: '/analysis/timeline', icon: Clock },
+      { label: 'Cross-Platform Intel', to: '/cross-platform', icon: Layers },
     ],
   },
   {
-    section: 'AI TOOLS',
+    section: 'AI & REPORTS',
     items: [
       { label: 'Bharat AI Copilot', to: '/copilot', icon: Bot },
-      { label: 'Reports & Dossiers', to: '/reports', icon: FileText },
+      { label: 'Generate Reports', to: '/reports', icon: FileText },
     ],
   },
 ];
@@ -107,6 +107,17 @@ export default function DashboardLayout() {
         <BrandLogo size="md" showText={sidebarOpen} />
       </Link>
 
+      {/* Alert Level Badge */}
+      {sidebarOpen && (
+        <div className="mx-3 mt-3 mb-1 rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+          <div className="flex-1 min-w-0">
+            <p className="text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider">Alert Level</p>
+            <p className="text-xs font-black text-emerald-700">🟢 ALL NORMAL</p>
+          </div>
+        </div>
+      )}
+
       {/* Nav */}
       <nav className="flex-1 overflow-y-auto py-3 px-2.5 space-y-4">
         {mainNav.map((group) => (
@@ -141,14 +152,20 @@ export default function DashboardLayout() {
         ))}
       </nav>
 
-      {/* Live Feed Status */}
+      {/* Live Status + IST Clock */}
       {sidebarOpen && (
-        <div className="p-3 border-t border-slate-100 bg-slate-50 text-[10px] text-slate-500 font-mono flex items-center justify-between">
-          <span className="flex items-center gap-1">
-            <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
-            <span>Live Stream</span>
-          </span>
-          <span className="font-bold text-emerald-700">342 msgs/s</span>
+        <div className="p-3 border-t border-slate-100 bg-slate-50 space-y-1.5">
+          <div className="flex items-center justify-between text-[10px] text-slate-500 font-mono">
+            <span className="flex items-center gap-1">
+              <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
+              <span>Live Monitoring</span>
+            </span>
+            <span className="font-bold text-emerald-700">✅ Active</span>
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
+            <span>24 Lakh posts / day</span>
+            <span className="text-slate-500 font-semibold">🇮🇳 IST</span>
+          </div>
         </div>
       )}
     </div>
