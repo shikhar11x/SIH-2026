@@ -47,12 +47,12 @@ export const MOCK_SENTIMENT_DATA = {
     sentimentVolatility: 'Low (0.12)',
   },
   emotions: [
-    { emotion: 'Joy & Optimism', percentage: 44.5, color: '#10b981', count: 1_076_419 },
-    { emotion: 'Trust & Confidence', percentage: 21.3, color: '#6366f1', count: 515_230 },
-    { emotion: 'Surprise & Awe', percentage: 14.8, color: '#8b5cf6', count: 358_000 },
-    { emotion: 'Concern & Fear', percentage: 9.6, color: '#f59e0b', count: 232_216 },
-    { emotion: 'Frustration & Anger', percentage: 6.2, color: '#ef4444', count: 149_973 },
-    { emotion: 'Sadness & Disappointment', percentage: 3.6, color: '#64748b', count: 87_082 },
+    { emotion: 'Supportive & Endorsing', percentage: 38.5, color: '#16a34a', count: 931_284 },
+    { emotion: 'Excitement & Optimism', percentage: 26.2, color: '#ea580c', count: 633_757 },
+    { emotion: 'Anxiety & Risk Concern', percentage: 14.8, color: '#d97706', count: 357_998 },
+    { emotion: 'Sarcasm & Cynicism (NLP Detected)', percentage: 9.4, color: '#8b5cf6', count: 227_378 },
+    { emotion: 'Against / Opposed', percentage: 7.2, color: '#dc2626', count: 174_162 },
+    { emotion: 'Neutral / Informational', percentage: 3.9, color: '#64748b', count: 94_338 },
   ],
   timeline: [
     { date: 'Day 1', positive: 54, neutral: 28, negative: 18, totalVolume: 120000 },

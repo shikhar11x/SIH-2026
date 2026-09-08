@@ -30,30 +30,30 @@ interface NavItem {
 
 const mainNav: { section: string; items: NavItem[] }[] = [
   {
-    section: 'NATIONAL MONITOR',
+    section: 'SIH CORE COMPONENTS',
     items: [
-      { label: 'Overview', to: '/analysis/overview', icon: LayoutDashboard },
-      { label: 'Platform Streams', to: '/platforms', icon: Globe },
-      { label: 'Live Data Ingestion', to: '/data', icon: Database },
+      { label: 'A. Data & Timeline Stream', to: '/data', icon: Database },
+      { label: 'B. Sentiment & Emotion NLP', to: '/analysis/sentiment', icon: Heart },
+      { label: 'C. Demographic Profiling', to: '/analysis/demographics', icon: Users },
+      { label: 'D. Real-Time Trend Radar', to: '/analysis/trends', icon: TrendingUp },
+      { label: 'E. Link & Network Topology', to: '/analysis/network', icon: Network },
     ],
   },
   {
-    section: 'INTELLIGENCE GRID',
+    section: 'DEEP DIVE ANALYTICS',
     items: [
-      { label: 'Sentiment & Emotion', to: '/analysis/sentiment', icon: Heart },
-      { label: 'Audience & Demographics', to: '/analysis/demographics', icon: Users },
-      { label: 'Trending Topics Radar', to: '/analysis/trends', icon: TrendingUp },
-      { label: 'Influencer Network', to: '/analysis/network', icon: Network },
-      { label: 'Information Flow', to: '/analysis/flow', icon: Workflow },
+      { label: 'Executive Overview', to: '/analysis/overview', icon: LayoutDashboard },
+      { label: 'Platform Streams (SIH Tiers)', to: '/platforms', icon: Globe },
+      { label: 'Information Flow Cascades', to: '/analysis/flow', icon: Workflow },
       { label: 'Conversation Timeline', to: '/analysis/timeline', icon: Clock },
       { label: 'Cross-Platform Matrix', to: '/cross-platform', icon: Layers },
     ],
   },
   {
-    section: 'DECISION SUPPORT',
+    section: 'AI DECISION SUPPORT',
     items: [
-      { label: 'AI Intelligence Copilot', to: '/copilot', icon: Bot },
-      { label: 'Executive Reports', to: '/reports', icon: FileText },
+      { label: 'Bharat AI Copilot', to: '/copilot', icon: Bot },
+      { label: 'Executive Dossiers', to: '/reports', icon: FileText },
     ],
   },
 ];

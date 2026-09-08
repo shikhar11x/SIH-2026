@@ -89,12 +89,28 @@ export default function PlatformsPage() {
     }
   };
 
+  const getSIHTier = (id: string) => {
+    switch (id) {
+      case 'twitter':
+      case 'telegram':
+        return { label: 'Essentials (Must-Have)', color: 'bg-orange-50 text-orange-700 border-orange-200' };
+      case 'instagram':
+      case 'facebook':
+        return { label: 'Desirable (Good-to-Have)', color: 'bg-blue-50 text-blue-700 border-blue-200' };
+      case 'reddit':
+      case 'youtube':
+        return { label: 'Appreciable (Comments NLP)', color: 'bg-purple-50 text-purple-700 border-purple-200' };
+      default:
+        return { label: 'Appreciable Addition', color: 'bg-slate-50 text-slate-700 border-slate-200' };
+    }
+  };
+
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
         title="Real-Time Platform Feeds & Ingestion Connectors"
-        subtitle="Live streaming decahose hooks from X, Telegram, Reddit, and YouTube with continuous normalization"
-        tag="LIVE STREAMS"
+        subtitle="Live streaming decahose hooks categorized by SIH-2026 Problem Statement Platform Ingestion Tiers"
+        tag="SIH COMPONENT A: MULTI-PLATFORM INGESTION"
         onRefresh={loadPlatforms}
       />
 
@@ -139,6 +155,7 @@ export default function PlatformsPage() {
         {platforms.map((p) => {
           const Icon = getPlatformIcon(p.icon);
           const isConnected = p.status === 'connected';
+          const tier = getSIHTier(p.id);
 
           return (
             <motion.div
@@ -147,6 +164,13 @@ export default function PlatformsPage() {
               className="glass-panel p-5 bg-white border border-slate-200 hover:border-orange-300 transition flex flex-col justify-between shadow-sm"
             >
               <div>
+                {/* SIH Tier Pill */}
+                <div className="mb-3">
+                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase border ${tier.color}`}>
+                    {tier.label}
+                  </span>
+                </div>
+
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">

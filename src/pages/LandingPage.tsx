@@ -10,7 +10,6 @@ import {
   Network,
   Workflow,
   ChevronRight,
-  FileText,
   Share2,
   Send,
   MessageSquare,
@@ -285,67 +284,73 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      {/* Capabilities / Modules */}
+      {/* SIH Problem Statement Core Architecture Section */}
       <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-wider text-orange-700 font-mono">
-            CORE INTELLIGENCE CAPABILITIES
+          <span className="text-xs font-bold uppercase tracking-wider text-orange-700 font-mono bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+            SMART INDIA HACKATHON 2026 • 5 CORE COMPONENTS
           </span>
-          <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
-            Engineered for National-Scale Social Analysis
+          <h2 className="text-3xl font-extrabold text-slate-900 mt-3">
+            AI-Driven Audience Intelligence & Link Analysis Framework
           </h2>
-          <p className="mt-3 text-xs sm:text-sm text-slate-600 font-medium">
-            Multi-lingual Indic sentiment analysis, graph centrality, and real-time viral narrative mapping.
+          <p className="mt-3 text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+            Direct 1:1 architectural alignment with the SIH Problem Statement across Continuous Ingestion, Multi-Dimensional Sentiment, Demographics, Trends, and Graph Link Analysis.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
             {
+              badge: 'COMPONENT A',
+              icon: Share2,
+              title: 'Continuous Data Collection & Timeline',
+              desc: 'Multi-platform live ingestion pipeline (Essentials: X & Telegram, Desirable: IG & FB, Appreciable: Reddit & YouTube) with structured time-stamped chronology.',
+              path: '/data',
+              color: 'text-orange-600',
+              bg: 'bg-orange-50',
+            },
+            {
+              badge: 'COMPONENT B',
               icon: Heart,
-              title: 'Aspect-Based Sentiment (ABSA)',
-              desc: 'Fine-grained sentiment classification across infrastructure, policy, cost, and developer sentiment in English and Indic languages.',
+              title: 'Multi-Dimensional Sentiment Inference',
+              desc: 'Advanced NLP detecting nuanced emotions: Sarcasm, Anxiety, Excitement, Supportive, Against/Opposed, and tracking sentiment shifts along the chronological timeline.',
               path: '/analysis/sentiment',
               color: 'text-emerald-700',
               bg: 'bg-emerald-50',
             },
             {
-              icon: Network,
-              title: 'Influencer & Key Opinion Leaders',
-              desc: 'PageRank and Betweenness Centrality mapping to identify high-amplification nodes driving public narratives.',
-              path: '/analysis/network',
+              badge: 'COMPONENT C',
+              icon: TrendingUp,
+              title: 'Automated Demographic Profiling',
+              desc: 'Aggregate, anonymized inference of age brackets, Indian state & global geography, Indic languages, and professional domain interest personas.',
+              path: '/analysis/demographics',
               color: 'text-blue-700',
               bg: 'bg-blue-50',
             },
             {
-              icon: TrendingUp,
-              title: 'Early Warning Trend Radar',
-              desc: 'Nascent spike and viral acceleration tracking detecting emerging topics 4 to 6 hours before peak dissemination.',
-              path: '/analysis/trends',
-              color: 'text-orange-600',
-              bg: 'bg-orange-50',
-            },
-            {
+              badge: 'COMPONENT D',
               icon: Workflow,
-              title: 'Cascade Information Flow',
-              desc: 'Track cross-platform hopping from origin source on X to Telegram broadcast groups and YouTube commentaries.',
-              path: '/analysis/flow',
+              title: 'Real-Time Trend & Topic Detection',
+              desc: 'Autonomous ranking, viral keyword emergence, velocity forecasting, and chronological shifting discussion tracking across active discourse.',
+              path: '/analysis/trends',
               color: 'text-amber-700',
               bg: 'bg-amber-50',
             },
             {
-              icon: Bot,
-              title: 'AI Intelligence Copilot',
-              desc: 'Conversational assistant with citations to verified social posts and inline trend line visualizations.',
-              path: '/copilot',
-              color: 'text-orange-700',
-              bg: 'bg-orange-50',
+              badge: 'COMPONENT E',
+              icon: Network,
+              title: 'Link Analysis & Network Topology',
+              desc: 'Follower relationship graph mapping, Key Opinion Leader (KOL) discovery via PageRank / Centrality, and multi-hop narrative diffusion cascades.',
+              path: '/analysis/network',
+              color: 'text-purple-700',
+              bg: 'bg-purple-50',
             },
             {
-              icon: FileText,
-              title: 'Executive Intelligence Briefs',
-              desc: 'Generate automated daily morning briefings and crisis risk dossiers with one click.',
-              path: '/reports',
+              badge: 'DECISION SUPPORT',
+              icon: Bot,
+              title: 'Bharat AI Copilot & Executive Briefs',
+              desc: 'Conversational synthesis engine with verified social citations, inline charts, and automated daily intelligence dossier generator.',
+              path: '/copilot',
               color: 'text-rose-700',
               bg: 'bg-rose-50',
             },
@@ -356,15 +361,20 @@ export default function LandingPage() {
               className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-orange-300 hover:shadow-md transition cursor-pointer flex flex-col justify-between"
             >
               <div>
-                <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center ${item.color} mb-4 shadow-sm`}>
-                  <item.icon className="w-6 h-6" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className={`w-11 h-11 rounded-xl ${item.bg} flex items-center justify-center ${item.color} shadow-sm`}>
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold uppercase text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                    {item.badge}
+                  </span>
                 </div>
                 <h3 className="text-base font-bold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-xs text-slate-600 leading-relaxed font-medium">{item.desc}</p>
               </div>
 
               <div className="pt-4 border-t border-slate-100 flex items-center gap-1 text-xs font-bold text-orange-600 mt-4">
-                <span>View Intelligence View</span>
+                <span>Explore Component Dashboard</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </div>
             </div>

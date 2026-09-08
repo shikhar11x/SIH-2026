@@ -46,9 +46,9 @@ export default function NetworkPage() {
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="Network & Influence Intelligence"
-        subtitle="Graph topological analysis, PageRank centrality, and unsupervised community partition mapping"
-        tag="GRAPH NEURAL TOPOLOGY"
+        title="Link Analysis & Follower Network Topology"
+        subtitle="Follower relationship graph mapping, Key Opinion Leader (KOL) discovery, and information diffusion spread modeling"
+        tag="SIH COMPONENT E: LINK ANALYSIS & NETWORK TOPOLOGY"
         onRefresh={loadNetwork}
         onExport={() => setExportOpen(true)}
       />

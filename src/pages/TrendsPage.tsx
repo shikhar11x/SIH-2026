@@ -70,9 +70,9 @@ export default function TrendsPage() {
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="National Trend Intelligence & Early Warning Radar"
-        subtitle="Real-time viral acceleration algorithms detecting nascent hashtags and social spikes across India"
-        tag="PREDICTIVE RADAR"
+        title="Real-Time Trend & Topic Detection Radar"
+        subtitle="Autonomous identification, ranking, predictive velocity modeling, and tracking of chronologically shifting discussions"
+        tag="SIH COMPONENT D: REAL-TIME TREND & TOPIC DETECTION"
         onRefresh={loadTrends}
         onExport={() => setExportOpen(true)}
       />

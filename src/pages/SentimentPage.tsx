@@ -60,9 +60,9 @@ export default function SentimentPage() {
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="Public Sentiment & Emotion Intelligence"
-        subtitle="Aspect-Based Sentiment Analysis (ABSA), multi-lingual Indic tone quantification, and emotion spectrum"
-        tag="INDIC NEURAL CLASSIFIER"
+        title="Multi-Dimensional Sentiment & Emotion Inference"
+        subtitle="Aspect-Based Sentiment Analysis (ABSA), nuanced emotion detection (sarcasm, anxiety, excitement, supportive, against), and chronological timeline tracking"
+        tag="SIH COMPONENT B: MULTI-DIMENSIONAL SENTIMENT INFERENCE"
         onRefresh={loadSentiment}
         onExport={() => setExportOpen(true)}
       />

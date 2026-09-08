@@ -4,16 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import {
   MessageSquare,
   Users,
-  Activity,
   TrendingUp,
   Sparkles,
   Bot,
   ArrowRight,
-  Radio,
   Share2,
   Send,
   MessageCircle,
   Video,
+  Database,
+  Heart,
+  Network,
+  Activity,
+  Radio,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -93,11 +96,34 @@ export default function OverviewPage() {
       <SectionHeader
         title="National Social Intelligence Overview"
         subtitle="Real-time multi-channel feed analysis across X, Telegram, Reddit, and YouTube (2.4M+ conversations analyzed)"
-        tag="REAL-TIME INGESTION"
+        tag="SIH-2026 ARCHITECTURE READY"
         onRefresh={handleRefresh}
         isRefreshing={refreshing}
         onExport={() => setExportOpen(true)}
       />
+
+      {/* SIH-2026 Core 5-Component Matrix Navigation Bar */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+        {[
+          { comp: 'A', label: 'Data & Timeline', to: '/data', icon: Database, color: 'text-orange-600', bg: 'hover:bg-orange-50' },
+          { comp: 'B', label: 'Sentiment (NLP)', to: '/analysis/sentiment', icon: Heart, color: 'text-emerald-600', bg: 'hover:bg-emerald-50' },
+          { comp: 'C', label: 'Demographics', to: '/analysis/demographics', icon: Users, color: 'text-blue-600', bg: 'hover:bg-blue-50' },
+          { comp: 'D', label: 'Trend Radar', to: '/analysis/trends', icon: TrendingUp, color: 'text-amber-600', bg: 'hover:bg-amber-50' },
+          { comp: 'E', label: 'Link Topology', to: '/analysis/network', icon: Network, color: 'text-purple-600', bg: 'hover:bg-purple-50' },
+        ].map((c) => (
+          <button
+            key={c.comp}
+            onClick={() => navigate(c.to)}
+            className={`p-3 bg-white border border-slate-200 rounded-xl ${c.bg} transition text-left flex items-center justify-between group shadow-sm`}
+          >
+            <div>
+              <span className="text-[10px] font-mono font-bold text-slate-400 block">COMPONENT {c.comp}</span>
+              <h5 className="text-xs font-bold text-slate-800 group-hover:text-slate-900">{c.label}</h5>
+            </div>
+            <c.icon className={`w-4 h-4 ${c.color}`} />
+          </button>
+        ))}
+      </div>
 
       {/* Live Stream Health Strip Focus (App-focused realtime fetching) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

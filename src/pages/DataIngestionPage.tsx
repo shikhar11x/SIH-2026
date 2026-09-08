@@ -84,9 +84,9 @@ export default function DataIngestionPage() {
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="Live Data Ingestion & Firehose Pipeline"
-        subtitle="Real-time multi-threaded ingestion engine streaming live social feeds into normalized vector embeddings"
-        tag="FIREHOSE ACTIVE"
+        title="Continuous Data Collection & Timeline Pipeline"
+        subtitle="Multi-platform live ingestion pipeline streaming social feeds and maintaining time-stamped historical chronology"
+        tag="SIH COMPONENT A: CONTINUOUS DATA COLLECTION & TIMELINE"
         onRefresh={loadData}
         actions={
           <button

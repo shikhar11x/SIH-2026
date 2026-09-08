@@ -58,9 +58,9 @@ export default function DemographicsPage() {
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="Citizen Demographics & Audience Grid"
-        subtitle="Audience segmentation across Indian states, generational cohorts, and behavioral persona clusters"
-        tag="NATIONAL REACH"
+        title="Automated Demographic Profiling & Audience Intelligence"
+        subtitle="Aggregate, anonymized inference of age brackets, geographic distribution (Indian states & global), Indic languages, and professional domain interests"
+        tag="SIH COMPONENT C: AUTOMATED DEMOGRAPHIC PROFILING"
         onRefresh={loadDemographics}
         onExport={() => setExportOpen(true)}
       />
