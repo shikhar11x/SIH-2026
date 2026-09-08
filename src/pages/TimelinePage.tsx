@@ -53,15 +53,15 @@ export default function TimelinePage() {
   const getEventBadgeClass = (type: string) => {
     switch (type) {
       case 'announcement':
-        return 'bg-blue-500/15 text-blue-400 border-blue-500/25';
+        return 'bg-blue-50 text-blue-700 border-blue-200';
       case 'viral_spike':
-        return 'bg-purple-500/15 text-purple-400 border-purple-500/25';
+        return 'bg-orange-50 text-orange-700 border-orange-200';
       case 'controversy':
-        return 'bg-rose-500/15 text-rose-400 border-rose-500/25';
+        return 'bg-rose-50 text-rose-700 border-rose-200';
       case 'milestone':
-        return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25';
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
       default:
-        return 'bg-accent/15 text-accent-light border-accent/25';
+        return 'bg-slate-100 text-slate-700 border-slate-200';
     }
   };
 
@@ -91,7 +91,7 @@ export default function TimelinePage() {
           subtitle="Friday 14:00 (Compute Subsidy)"
           trend="up"
           icon={Zap}
-          iconColor="text-amber-400"
+          iconColor="text-amber-600"
         />
         <StatCard
           title="Highest Sentiment Window"
@@ -99,7 +99,7 @@ export default function TimelinePage() {
           subtitle="Saturday 11:00 (Tech Demo Dips)"
           trend="up"
           icon={TrendingUp}
-          iconColor="text-emerald-400"
+          iconColor="text-emerald-600"
         />
         <StatCard
           title="Lowest Sentiment Anomaly"
@@ -107,7 +107,7 @@ export default function TimelinePage() {
           subtitle="Thursday 19:00 (API Tier Backlash)"
           trend="down"
           icon={AlertCircle}
-          iconColor="text-rose-400"
+          iconColor="text-rose-600"
         />
       </div>
 
@@ -115,19 +115,19 @@ export default function TimelinePage() {
       <div className="glass-panel p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
               Dual-Axis Volume & Sentiment Correlation
             </h3>
-            <p className="text-xs text-gray-400">
-              Purple area denotes hourly post volume; green line denotes real-time net positive sentiment score
+            <p className="text-xs text-slate-500">
+              Saffron area denotes hourly post volume; green line denotes real-time net positive sentiment score
             </p>
           </div>
           <div className="flex items-center gap-4 text-xs font-mono">
-            <span className="flex items-center gap-1.5 text-accent-light">
-              <span className="w-3 h-3 rounded bg-accent/40 border border-accent" /> Hourly Volume (Left)
+            <span className="flex items-center gap-1.5 text-orange-700 font-semibold">
+              <span className="w-3 h-3 rounded bg-orange-100 border border-orange-500" /> Hourly Volume (Left)
             </span>
-            <span className="flex items-center gap-1.5 text-emerald-400">
-              <span className="w-3 h-0.5 bg-emerald-400" /> Sentiment % (Right)
+            <span className="flex items-center gap-1.5 text-emerald-700 font-semibold">
+              <span className="w-3 h-0.5 bg-emerald-600" /> Sentiment % (Right)
             </span>
           </div>
         </div>
@@ -137,14 +137,14 @@ export default function TimelinePage() {
             <ComposedChart data={data.series}>
               <defs>
                 <linearGradient id="volGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4} />
-                  <stop offset="95%" stopColor="#6366f1" stopOpacity={0.0} />
+                  <stop offset="5%" stopColor="#ea580c" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#ea580c" stopOpacity={0.0} />
                 </linearGradient>
               </defs>
               <XAxis dataKey="time" stroke="#64748b" fontSize={11} tickLine={false} />
               <YAxis
                 yAxisId="left"
-                stroke="#818cf8"
+                stroke="#ea580c"
                 fontSize={11}
                 tickFormatter={(v) => `${v / 1000}k`}
                 tickLine={false}
@@ -153,20 +153,20 @@ export default function TimelinePage() {
                 yAxisId="right"
                 orientation="right"
                 domain={[0, 100]}
-                stroke="#10b981"
+                stroke="#16a34a"
                 fontSize={11}
                 tickFormatter={(v) => `${v}%`}
                 tickLine={false}
               />
               <Tooltip
-                contentStyle={{ backgroundColor: '#0f1629', borderColor: '#374151', borderRadius: '8px' }}
+                contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '8px', color: '#0f172a' }}
                 formatter={(val: any, name: any) => [
                   name === 'volume' ? `${formatNumber(val)} posts` : `${val}% Positive`,
                   name === 'volume' ? 'Hourly Volume' : 'Net Sentiment',
                 ]}
               />
-              <Area yAxisId="left" type="monotone" dataKey="volume" fill="url(#volGrad)" stroke="#6366f1" strokeWidth={2} />
-              <Line yAxisId="right" type="monotone" dataKey="sentiment" stroke="#10b981" strokeWidth={2.5} dot={false} />
+              <Area yAxisId="left" type="monotone" dataKey="volume" fill="url(#volGrad)" stroke="#ea580c" strokeWidth={2} />
+              <Line yAxisId="right" type="monotone" dataKey="sentiment" stroke="#16a34a" strokeWidth={2.5} dot={false} />
             </ComposedChart>
           </ResponsiveContainer>
         </div>
@@ -176,12 +176,12 @@ export default function TimelinePage() {
       <div className="glass-panel p-5">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Flag className="w-4 h-4 text-accent-light" />
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <Flag className="w-4 h-4 text-orange-600" />
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
               Annotated Inflection Points & Anomalies
             </h3>
           </div>
-          <span className="text-xs font-mono text-gray-400">4 Critical Inflections Detected</span>
+          <span className="text-xs font-mono text-slate-500">4 Critical Inflections Detected</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -195,8 +195,8 @@ export default function TimelinePage() {
                 onClick={() => setSelectedEvent(evt)}
                 className={`p-4 rounded-xl border transition cursor-pointer flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-accent/15 border-accent shadow-[0_0_20px_rgba(99,102,241,0.2)]'
-                    : 'bg-navy-800/80 border-white/5 hover:border-white/20'
+                    ? 'bg-orange-50/70 border-orange-500 shadow-sm ring-2 ring-orange-400/20'
+                    : 'bg-white border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <div>
@@ -204,25 +204,25 @@ export default function TimelinePage() {
                     <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase font-mono border ${getEventBadgeClass(evt.type)}`}>
                       {evt.type.replace('_', ' ')}
                     </span>
-                    <span className="text-[11px] font-mono text-gray-400">{evt.time}</span>
+                    <span className="text-[11px] font-mono text-slate-500">{evt.time}</span>
                   </div>
 
-                  <h4 className="text-sm font-bold text-white mb-1">{evt.title}</h4>
-                  <p className="text-xs text-gray-300 leading-relaxed mb-3">{evt.description}</p>
+                  <h4 className="text-sm font-bold text-slate-900 mb-1">{evt.title}</h4>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-3">{evt.description}</p>
                 </div>
 
-                <div className="space-y-1.5 pt-2.5 border-t border-white/5 text-[11px] font-mono">
-                  <div className="flex justify-between text-gray-400">
+                <div className="space-y-1.5 pt-2.5 border-t border-slate-100 text-[11px] font-mono">
+                  <div className="flex justify-between text-slate-500">
                     <span>Volume Delta:</span>
-                    <strong className="text-white">{evt.volumeImpact}</strong>
+                    <strong className="text-slate-900">{evt.volumeImpact}</strong>
                   </div>
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-slate-500">
                     <span>Sentiment Delta:</span>
-                    <strong className="text-emerald-400">{evt.sentimentImpact}</strong>
+                    <strong className="text-emerald-700">{evt.sentimentImpact}</strong>
                   </div>
-                  <div className="flex justify-between text-gray-400">
+                  <div className="flex justify-between text-slate-500">
                     <span>Author / Source:</span>
-                    <span className="text-accent-light">{evt.author} ({evt.platform})</span>
+                    <span className="text-orange-700 font-semibold">{evt.author} ({evt.platform})</span>
                   </div>
                 </div>
               </motion.div>

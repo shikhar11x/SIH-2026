@@ -1,29 +1,34 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
-/* ── Custom theme tokens via CSS variables ── */
+/* ── Custom theme tokens for Indian Govt Intelligence Portal ── */
 @theme {
-  --color-navy-900: #0a0e1a;
-  --color-navy-800: #0f1629;
-  --color-navy-700: #151d35;
-  --color-navy-600: #1c2541;
+  --color-saffron-500: #ff671f;
+  --color-saffron-600: #ea580c;
+  --color-saffron-50: #fff7ed;
+  --color-saffron-100: #ffedd5;
 
-  --color-surface: #111827;
-  --color-surface-light: #1f2937;
-  --color-surface-lighter: #374151;
+  --color-ashoka-blue: #002d62;
+  --color-navy-primary: #0f172a;
+  --color-navy-secondary: #1e293b;
 
-  --color-accent: #6366f1;
-  --color-accent-light: #818cf8;
-  --color-accent-dark: #4f46e5;
+  --color-india-green: #046a38;
+  --color-india-green-light: #16a34a;
+  --color-india-green-50: #f0fdf4;
 
-  --color-positive: #10b981;
-  --color-negative: #ef4444;
-  --color-warning: #f59e0b;
+  --color-surface-bg: #f8fafc;
+  --color-surface-card: #ffffff;
+  --color-surface-card-hover: #f1f5f9;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-accent: #ea580c;
+  --color-accent-light: #f97316;
+  --color-accent-dark: #c2410c;
 
-  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.15);
-  --shadow-glow-sm: 0 0 10px rgba(99, 102, 241, 0.1);
+  --color-positive: #16a34a;
+  --color-negative: #dc2626;
+  --color-warning: #d97706;
+
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* ── Base resets ── */
@@ -38,8 +43,8 @@
     height: 100%;
     width: 100%;
     font-family: var(--font-sans);
-    background-color: var(--color-navy-900);
-    color: #e2e8f0;
+    background-color: #f8fafc;
+    color: #1e293b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -50,52 +55,67 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-navy-800);
+    background: #f1f5f9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-surface-lighter);
-    border-radius: 3px;
+    background: #cbd5e1;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #4b5563;
+    background: #94a3b8;
   }
 }
 
-/* ── Reusable component classes ── */
+/* ── Government Portal Component Styles ── */
 @layer components {
   .glass-panel {
-    background: rgba(17, 24, 39, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(99, 102, 241, 0.08);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
   }
 
   .glass-panel-hover:hover {
-    border-color: rgba(99, 102, 241, 0.2);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.08);
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #818cf8 0%, #6366f1 50%, #a78bfa 100%);
+    background: linear-gradient(135deg, #ea580c 0%, #002d62 60%, #046a38 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .gov-badge {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #c2410c;
+  }
+
+  .tricolor-border {
+    border-image: linear-gradient(to right, #ff671f, #ffffff, #046a38) 1;
+  }
+
+  .tricolor-line {
+    background: linear-gradient(to right, #ff671f 33%, #002d62 33% 66%, #046a38 66%);
   }
 
   .demo-badge {
     position: fixed;
     bottom: 16px;
     right: 16px;
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    color: #818cf8;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #ea580c;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.05em;
     padding: 4px 10px;
-    border-radius: 4px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     z-index: 9999;
     pointer-events: none;
   }

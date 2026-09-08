@@ -9,8 +9,11 @@ import {
   Sparkles,
   Bot,
   ArrowRight,
-  Globe,
   Radio,
+  Share2,
+  Send,
+  MessageCircle,
+  Video,
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -70,9 +73,9 @@ export default function OverviewPage() {
   }
 
   const sentimentPieData = [
-    { name: 'Positive', value: overview.sentimentSnapshot.positive, color: '#10b981' },
-    { name: 'Neutral', value: overview.sentimentSnapshot.neutral, color: '#f59e0b' },
-    { name: 'Negative', value: overview.sentimentSnapshot.negative, color: '#ef4444' },
+    { name: 'Positive', value: overview.sentimentSnapshot.positive, color: '#16a34a' },
+    { name: 'Neutral', value: overview.sentimentSnapshot.neutral, color: '#d97706' },
+    { name: 'Negative', value: overview.sentimentSnapshot.negative, color: '#dc2626' },
   ];
 
   const platformVolumeData = [
@@ -88,44 +91,99 @@ export default function OverviewPage() {
     <div className="space-y-6 pb-12">
       {/* Header */}
       <SectionHeader
-        title="Social Intelligence Overview"
-        subtitle="Unified multi-channel intelligence synthesized from 2.4M+ social conversations across 6 connected platforms"
-        tag="LIVE SYNTHESIS"
+        title="National Social Intelligence Overview"
+        subtitle="Real-time multi-channel feed analysis across X, Telegram, Reddit, and YouTube (2.4M+ conversations analyzed)"
+        tag="REAL-TIME INGESTION"
         onRefresh={handleRefresh}
         isRefreshing={refreshing}
         onExport={() => setExportOpen(true)}
       />
 
-      {/* AI Executive Briefing Banner */}
+      {/* Live Stream Health Strip Focus (App-focused realtime fetching) */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+              <Share2 className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-slate-800">X / Twitter</span>
+              <span className="text-[10px] text-slate-500 block font-mono">184 msgs/sec</span>
+            </div>
+          </div>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        </div>
+
+        <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+              <Send className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-slate-800">Telegram Channels</span>
+              <span className="text-[10px] text-slate-500 block font-mono">68 msgs/sec</span>
+            </div>
+          </div>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        </div>
+
+        <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
+              <MessageCircle className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-slate-800">Reddit Subreddits</span>
+              <span className="text-[10px] text-slate-500 block font-mono">52 msgs/sec</span>
+            </div>
+          </div>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        </div>
+
+        <div className="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center">
+              <Video className="w-4 h-4" />
+            </div>
+            <div>
+              <span className="text-xs font-bold text-slate-800">YouTube Tech Feeds</span>
+              <span className="text-[10px] text-slate-500 block font-mono">38 msgs/sec</span>
+            </div>
+          </div>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        </div>
+      </div>
+
+      {/* AI Executive Briefing Banner with Indian Touch */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-panel p-5 relative overflow-hidden border-accent/30 bg-gradient-to-r from-accent/15 via-navy-800/80 to-purple-900/10 shadow-[0_0_30px_rgba(99,102,241,0.15)]"
+        className="glass-panel p-5 bg-gradient-to-r from-orange-50 via-white to-emerald-50 border-orange-200 shadow-sm relative overflow-hidden"
       >
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center text-accent-light flex-shrink-0 mt-0.5">
-              <Sparkles className="w-5 h-5 animate-pulse" />
+            <div className="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+              <Sparkles className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-accent-light">
-                  Neural Intelligence Synthesis
+                <span className="text-xs font-bold uppercase tracking-wider text-orange-800">
+                  National Neural Intelligence Briefing
                 </span>
-                <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                  98.4% Confidence
+                <span className="flex items-center gap-1 text-[10px] text-emerald-700 font-mono font-bold bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-ping" />
+                  98.4% Confidence (India Stack AI)
                 </span>
               </div>
-              <p className="text-sm text-gray-200 leading-relaxed max-w-4xl">{overview.aiSummary}</p>
+              <p className="text-sm text-slate-700 font-medium leading-relaxed max-w-4xl">{overview.aiSummary}</p>
             </div>
           </div>
           <button
             onClick={() => navigate('/copilot')}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-accent hover:bg-accent-dark text-white transition shadow-glow flex-shrink-0"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-orange-600 hover:bg-orange-700 text-white transition shadow-sm flex-shrink-0"
           >
             <Bot className="w-4 h-4" />
-            <span>Consult AI Copilot</span>
+            <span>Consult Copilot</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -140,31 +198,32 @@ export default function OverviewPage() {
           changePeriod="vs last 7d"
           trend="up"
           icon={MessageSquare}
-          accentGlow
+          iconColor="text-blue-700"
         />
         <StatCard
-          title="Unique Participants"
+          title="Unique Citizen Participants"
           value={formatNumber(overview.metrics.uniqueUsers)}
           change={8.2}
           trend="up"
           icon={Users}
+          iconColor="text-orange-600"
         />
         <StatCard
-          title="Net Sentiment Score"
-          value={`${overview.metrics.sentimentScore}/100`}
+          title="National Sentiment Index"
+          value={`${overview.metrics.sentimentScore} / 100`}
           change={overview.sentimentSnapshot.change}
-          changePeriod="sentiment lift"
+          changePeriod="positive sentiment lift"
           trend="up"
           icon={Activity}
-          iconColor="text-emerald-400"
+          iconColor="text-emerald-600"
         />
         <StatCard
-          title="Emerging Viral Trends"
+          title="Active Viral Topics"
           value={overview.metrics.emergingTrends}
-          subtitle="12 critical early warnings"
+          subtitle="Realtime early alerts"
           trend="neutral"
           icon={TrendingUp}
-          iconColor="text-purple-400"
+          iconColor="text-orange-600"
           onClick={() => navigate('/analysis/trends')}
         />
       </div>
@@ -175,8 +234,8 @@ export default function OverviewPage() {
         <div className="glass-panel p-5 flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">Sentiment Polarity</h3>
-              <p className="text-xs text-gray-400">Distribution across analyzed posts</p>
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Sentiment Polarity</h3>
+              <p className="text-xs text-slate-500 font-medium">Distribution across analyzed posts</p>
             </div>
             <SentimentBadge sentiment="positive" score={overview.sentimentSnapshot.positive} size="sm" />
           </div>
@@ -199,28 +258,28 @@ export default function OverviewPage() {
                 </Pie>
                 <Tooltip
                   formatter={(val: any) => [`${val}%`, 'Share']}
-                  contentStyle={{ backgroundColor: '#0f1629', borderColor: '#374151', borderRadius: '8px' }}
+                  contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '8px', color: '#0f172a' }}
                 />
               </PieChart>
             </ResponsiveContainer>
             <div className="absolute text-center pointer-events-none">
-              <span className="text-xl font-bold text-white">{overview.sentimentSnapshot.positive}%</span>
-              <p className="text-[10px] text-gray-400">Positive</p>
+              <span className="text-xl font-bold text-slate-900">{overview.sentimentSnapshot.positive}%</span>
+              <p className="text-[10px] text-slate-500 font-bold uppercase">Positive</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-white/5 text-center">
-            <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-              <span className="text-xs font-bold text-emerald-400">{overview.sentimentSnapshot.positive}%</span>
-              <p className="text-[10px] text-gray-400">Positive</p>
+          <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-slate-200 text-center">
+            <div className="p-2 rounded-lg bg-emerald-50 border border-emerald-200">
+              <span className="text-xs font-bold text-emerald-700">{overview.sentimentSnapshot.positive}%</span>
+              <p className="text-[10px] text-slate-500">Positive</p>
             </div>
-            <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
-              <span className="text-xs font-bold text-amber-400">{overview.sentimentSnapshot.neutral}%</span>
-              <p className="text-[10px] text-gray-400">Neutral</p>
+            <div className="p-2 rounded-lg bg-amber-50 border border-amber-200">
+              <span className="text-xs font-bold text-amber-700">{overview.sentimentSnapshot.neutral}%</span>
+              <p className="text-[10px] text-slate-500">Neutral</p>
             </div>
-            <div className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20">
-              <span className="text-xs font-bold text-rose-400">{overview.sentimentSnapshot.negative}%</span>
-              <p className="text-[10px] text-gray-400">Negative</p>
+            <div className="p-2 rounded-lg bg-rose-50 border border-rose-200">
+              <span className="text-xs font-bold text-rose-700">{overview.sentimentSnapshot.negative}%</span>
+              <p className="text-[10px] text-slate-500">Negative</p>
             </div>
           </div>
         </div>
@@ -229,12 +288,12 @@ export default function OverviewPage() {
         <div className="glass-panel p-5 lg:col-span-2 flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">Conversation Volume Trend</h3>
-              <p className="text-xs text-gray-400">Multi-channel daily ingested message volume</p>
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Multi-Channel Ingestion Timeline</h3>
+              <p className="text-xs text-slate-500 font-medium">Daily social conversation volume aggregated in real-time</p>
             </div>
             <button
               onClick={() => navigate('/analysis/timeline')}
-              className="text-xs font-medium text-accent-light hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1"
             >
               <span>Full Timeline</span>
               <ArrowRight className="w-3 h-3" />
@@ -245,31 +304,31 @@ export default function OverviewPage() {
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={sentimentData.timeline}>
                 <defs>
-                  <linearGradient id="colorVolume" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#6366f1" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="#6366f1" stopOpacity={0.0} />
+                  <linearGradient id="colorVolumeGov" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#ea580c" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#ea580c" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="date" stroke="#64748b" fontSize={11} tickLine={false} />
+                <XAxis dataKey="date" stroke="#94a3b8" fontSize={11} tickLine={false} />
                 <YAxis
-                  stroke="#64748b"
+                  stroke="#94a3b8"
                   fontSize={11}
                   tickFormatter={(val) => `${val / 1000}k`}
                   tickLine={false}
                   axisLine={false}
                 />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0f1629', borderColor: '#374151', borderRadius: '8px' }}
+                  contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '8px', color: '#0f172a' }}
                   formatter={(val: any) => [formatNumber(val), 'Volume']}
                 />
-                <Area type="monotone" dataKey="totalVolume" stroke="#6366f1" strokeWidth={2.5} fillOpacity={1} fill="url(#colorVolume)" />
+                <Area type="monotone" dataKey="totalVolume" stroke="#ea580c" strokeWidth={2.5} fillOpacity={1} fill="url(#colorVolumeGov)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
 
-          <div className="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-white/5">
-            <span>Peak Activity: <strong className="text-white">Day 8 (420K posts)</strong></span>
-            <span>Avg Daily Run-rate: <strong className="text-white">284K posts/day</strong></span>
+          <div className="flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-slate-200">
+            <span>Peak Activity: <strong className="text-slate-900">Day 8 (420K posts)</strong></span>
+            <span>Current Ingestion Run-rate: <strong className="text-orange-600">342 items / sec</strong></span>
           </div>
         </div>
       </div>
@@ -280,45 +339,45 @@ export default function OverviewPage() {
         <div className="glass-panel p-5">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-accent/15 flex items-center justify-center text-accent-light">
+              <div className="w-7 h-7 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
                 <TrendingUp className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider">High Velocity Topics</h3>
-                <p className="text-xs text-gray-400">Topics gaining viral acceleration</p>
+                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Real-time Trending Narratives</h3>
+                <p className="text-xs text-slate-500 font-medium">Fastest accelerating topics in India</p>
               </div>
             </div>
             <button
               onClick={() => navigate('/analysis/trends')}
-              className="text-xs text-accent-light hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-orange-600 hover:underline flex items-center gap-1"
             >
               <span>Explore All</span>
               <ArrowRight className="w-3 h-3" />
             </button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {overview.trendSnapshot.map((item: any, idx: number) => (
               <div
                 key={idx}
                 onClick={() => navigate('/analysis/trends')}
-                className="p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-accent/30 transition flex items-center justify-between cursor-pointer"
+                className="p-3 rounded-xl bg-slate-50 hover:bg-orange-50/50 border border-slate-200 hover:border-orange-300 transition flex items-center justify-between cursor-pointer"
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-5 font-mono text-xs font-bold text-gray-500">#{idx + 1}</span>
+                  <span className="w-5 font-mono text-xs font-extrabold text-orange-600">#{idx + 1}</span>
                   <div>
-                    <h4 className="text-sm font-semibold text-white hover:text-accent-light transition">{item.topic}</h4>
-                    <p className="text-[11px] text-gray-400">{formatNumber(item.mentions)} mentions</p>
+                    <h4 className="text-xs font-bold text-slate-900 hover:text-orange-600 transition">{item.topic}</h4>
+                    <p className="text-[11px] text-slate-500">{formatNumber(item.mentions)} live mentions</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                    className={`text-xs font-bold px-2 py-0.5 rounded-full ${
                       item.status === 'viral'
-                        ? 'bg-rose-500/15 text-rose-400 border border-rose-500/25 animate-pulse'
+                        ? 'bg-rose-100 text-rose-700 border border-rose-200'
                         : item.status === 'rising'
-                        ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/25'
-                        : 'bg-accent/15 text-accent-light border border-accent/25'
+                        ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                        : 'bg-blue-100 text-blue-700 border border-blue-200'
                     }`}
                   >
                     +{item.growth}%
@@ -333,19 +392,19 @@ export default function OverviewPage() {
         <div className="glass-panel p-5">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-accent/15 flex items-center justify-center text-accent-light">
-                <Globe className="w-4 h-4" />
+              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
+                <Share2 className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider">Platform Ingestion Share</h3>
-                <p className="text-xs text-gray-400">Share of voice across connected channels</p>
+                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Platform Stream Share</h3>
+                <p className="text-xs text-slate-500 font-medium">Volume distribution across integrated channels</p>
               </div>
             </div>
             <button
               onClick={() => navigate('/platforms')}
-              className="text-xs text-accent-light hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-orange-600 hover:underline flex items-center gap-1"
             >
-              <span>Manage Connectors</span>
+              <span>Platform Hub</span>
               <ArrowRight className="w-3 h-3" />
             </button>
           </div>
@@ -353,42 +412,42 @@ export default function OverviewPage() {
           <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={platformVolumeData} layout="vertical" margin={{ left: 10, right: 30, top: 10, bottom: 5 }}>
-                <XAxis type="number" stroke="#64748b" fontSize={11} tickFormatter={(v) => `${v}k`} />
-                <YAxis dataKey="name" type="category" stroke="#94a3b8" fontSize={12} width={90} tickLine={false} />
+                <XAxis type="number" stroke="#94a3b8" fontSize={11} tickFormatter={(v) => `${v}k`} />
+                <YAxis dataKey="name" type="category" stroke="#475569" fontSize={12} width={90} tickLine={false} />
                 <Tooltip
                   formatter={(val: any) => [`${val}K posts`, 'Volume']}
-                  contentStyle={{ backgroundColor: '#0f1629', borderColor: '#374151', borderRadius: '8px' }}
+                  contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '8px', color: '#0f172a' }}
                 />
-                <Bar dataKey="posts" fill="#6366f1" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="posts" fill="#ea580c" radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 mt-2 pt-3 border-t border-white/5 text-center text-xs text-gray-400">
-            <div>Leading: <strong className="text-white">X (42%)</strong></div>
-            <div>Fastest Growth: <strong className="text-emerald-400">Telegram (+34%)</strong></div>
-            <div>Active Nodes: <strong className="text-white">842 KOLs</strong></div>
+          <div className="grid grid-cols-3 gap-2 mt-2 pt-3 border-t border-slate-200 text-center text-xs text-slate-500 font-medium">
+            <div>Leading: <strong className="text-slate-900">X / Twitter (42%)</strong></div>
+            <div>Fastest Feed: <strong className="text-emerald-700">Telegram (+34%)</strong></div>
+            <div>Active KOLs: <strong className="text-slate-900">842 Leaders</strong></div>
           </div>
         </div>
       </div>
 
-      {/* Row 4: Live Social Post Intelligence Stream */}
+      {/* Row 4: Live Social Post Feed Stream */}
       <div className="glass-panel p-5">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400">
+            <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
               <Radio className="w-4 h-4 animate-pulse" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">Live Intelligence Stream</h3>
-              <p className="text-xs text-gray-400">Real-time sampled posts classified with sentiment & emotion</p>
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Live Real-time Social Stream</h3>
+              <p className="text-xs text-slate-500 font-medium">Sampled incoming posts categorized with tone and confidence scores</p>
             </div>
           </div>
           <button
             onClick={() => navigate('/analysis/sentiment')}
-            className="text-xs text-accent-light hover:underline flex items-center gap-1"
+            className="text-xs font-bold text-orange-600 hover:underline flex items-center gap-1"
           >
-            <span>Deep Dive in Sentiment</span>
+            <span>Sentiment Grid</span>
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>
@@ -397,15 +456,15 @@ export default function OverviewPage() {
           {sentimentData.samplePosts.map((post: any) => (
             <div
               key={post.id}
-              className="p-4 rounded-xl bg-navy-800/80 border border-white/5 hover:border-accent/30 transition flex flex-col justify-between"
+              className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-orange-300 transition flex flex-col justify-between shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2.5">
                   <div className="flex items-center gap-2.5">
-                    <img src={post.avatar} alt={post.author} className="w-8 h-8 rounded-full object-cover border border-white/10" />
+                    <img src={post.avatar} alt={post.author} className="w-8 h-8 rounded-full object-cover border border-slate-200" />
                     <div>
-                      <h5 className="text-xs font-bold text-white leading-none">{post.author}</h5>
-                      <span className="text-[11px] text-gray-400 font-mono">{post.handle}</span>
+                      <h5 className="text-xs font-bold text-slate-900 leading-none">{post.author}</h5>
+                      <span className="text-[11px] text-slate-500 font-mono">{post.handle}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -413,16 +472,16 @@ export default function OverviewPage() {
                     <SentimentBadge sentiment={post.sentiment} score={post.confidence * 100} size="sm" />
                   </div>
                 </div>
-                <p className="text-xs text-gray-300 leading-relaxed mb-3">{post.content}</p>
+                <p className="text-xs text-slate-700 leading-relaxed mb-3">{post.content}</p>
               </div>
 
-              <div className="flex items-center justify-between pt-2.5 border-t border-white/5 text-[11px] text-gray-400">
+              <div className="flex items-center justify-between pt-2.5 border-t border-slate-200 text-[11px] text-slate-500 font-medium">
                 <div className="flex items-center gap-1.5 flex-wrap">
                   {post.tags.map((tag: string, i: number) => (
-                    <span key={i} className="text-accent-light opacity-90">{tag}</span>
+                    <span key={i} className="text-orange-700 font-semibold">{tag}</span>
                   ))}
                 </div>
-                <span className="font-mono">{post.timestamp}</span>
+                <span className="font-mono text-slate-400">{post.timestamp}</span>
               </div>
             </div>
           ))}

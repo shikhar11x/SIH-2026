@@ -122,12 +122,12 @@ export default function NetworkPage() {
           </div>
 
           {/* SVG Graph Viewport */}
-          <div className="w-full h-96 sm:h-[420px] bg-navy-950/90 rounded-xl border border-white/5 relative overflow-hidden flex items-center justify-center">
+          <div className="w-full h-96 sm:h-[420px] bg-slate-50 rounded-xl border border-slate-200 relative overflow-hidden flex items-center justify-center">
             {/* Background grid lines */}
             <div
-              className="absolute inset-0 opacity-15 pointer-events-none"
+              className="absolute inset-0 opacity-25 pointer-events-none"
               style={{
-                backgroundImage: 'radial-gradient(rgba(99, 102, 241, 0.4) 1px, transparent 1px)',
+                backgroundImage: 'radial-gradient(rgba(234, 88, 12, 0.3) 1px, transparent 1px)',
                 backgroundSize: '24px 24px',
               }}
             />
@@ -152,8 +152,8 @@ export default function NetworkPage() {
                     y1={s.y}
                     x2={t.x}
                     y2={t.y}
-                    stroke={isHighlighted ? '#818cf8' : 'rgba(255, 255, 255, 0.12)'}
-                    strokeWidth={isHighlighted ? 2.5 : 1}
+                    stroke={isHighlighted ? '#ea580c' : '#cbd5e1'}
+                    strokeWidth={isHighlighted ? 2.5 : 1.2}
                     strokeDasharray={link.type === 'reply' ? '4,4' : undefined}
                   />
                 );
@@ -185,7 +185,7 @@ export default function NetworkPage() {
                       cx={node.x}
                       cy={node.y}
                       r={radius}
-                      fill="#0f1629"
+                      fill="#ffffff"
                       stroke={node.communityColor}
                       strokeWidth={isSelected ? 3.5 : 2}
                     />
@@ -195,7 +195,7 @@ export default function NetworkPage() {
                       x={node.x}
                       y={node.y + 4}
                       textAnchor="middle"
-                      fill="#ffffff"
+                      fill="#0f172a"
                       fontSize="11"
                       fontWeight="bold"
                     >
@@ -207,9 +207,9 @@ export default function NetworkPage() {
                       x={node.x}
                       y={node.y + radius + 14}
                       textAnchor="middle"
-                      fill={isSelected ? '#ffffff' : '#94a3b8'}
+                      fill={isSelected ? '#ea580c' : '#475569'}
                       fontSize="10"
-                      fontWeight={isSelected ? 'bold' : 'normal'}
+                      fontWeight={isSelected ? 'bold' : '500'}
                     >
                       {node.handle}
                     </text>
@@ -220,9 +220,9 @@ export default function NetworkPage() {
           </div>
 
           {/* Graph Legend */}
-          <div className="flex items-center gap-4 flex-wrap pt-3 border-t border-white/5 text-[11px] text-gray-400">
+          <div className="flex items-center gap-4 flex-wrap pt-3 border-t border-slate-200 text-[11px] text-slate-600">
             {data.communities.map((comm: CommunityCluster) => (
-              <div key={comm.id} className="flex items-center gap-1.5">
+              <div key={comm.id} className="flex items-center gap-1.5 font-medium">
                 <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: comm.color }} />
                 <span>{comm.name}</span>
               </div>
@@ -234,58 +234,58 @@ export default function NetworkPage() {
         <div className="glass-panel p-5 flex flex-col justify-between">
           {selectedNode ? (
             <div>
-              <div className="flex items-start justify-between pb-4 border-b border-white/5">
+              <div className="flex items-start justify-between pb-4 border-b border-slate-200">
                 <div className="flex items-center gap-3">
                   <img
                     src={selectedNode.avatar}
                     alt={selectedNode.name}
-                    className="w-12 h-12 rounded-full object-cover border-2"
+                    className="w-12 h-12 rounded-full object-cover border-2 shadow-sm"
                     style={{ borderColor: selectedNode.communityColor }}
                   />
                   <div>
-                    <h4 className="text-sm font-bold text-white">{selectedNode.name}</h4>
-                    <span className="text-xs font-mono text-accent-light">{selectedNode.handle}</span>
-                    <p className="text-[11px] text-gray-400">{selectedNode.role}</p>
+                    <h4 className="text-sm font-bold text-slate-900">{selectedNode.name}</h4>
+                    <span className="text-xs font-mono font-medium text-amber-700">{selectedNode.handle}</span>
+                    <p className="text-[11px] text-slate-500">{selectedNode.role}</p>
                   </div>
                 </div>
               </div>
 
               {/* Node metrics */}
               <div className="space-y-3.5 my-4">
-                <div className="p-3 rounded-xl bg-navy-900/90 border border-white/5">
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <div className="flex items-center justify-between text-xs mb-1">
-                    <span className="text-gray-400">Influence Score</span>
-                    <span className="font-bold text-emerald-400 font-mono text-sm">{selectedNode.influenceScore}/100</span>
+                    <span className="text-slate-600 font-medium">Influence Score</span>
+                    <span className="font-bold text-emerald-600 font-mono text-sm">{selectedNode.influenceScore}/100</span>
                   </div>
-                  <div className="w-full h-1.5 rounded-full bg-navy-950 overflow-hidden">
+                  <div className="w-full h-1.5 rounded-full bg-slate-200 overflow-hidden">
                     <div style={{ width: `${selectedNode.influenceScore}%` }} className="bg-emerald-500 h-full" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2.5 text-xs">
-                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-[10px] text-gray-400 block">Betweenness</span>
-                    <strong className="text-white font-mono text-sm">{selectedNode.betweennessCentrality}</strong>
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] text-slate-500 block">Betweenness</span>
+                    <strong className="text-slate-900 font-mono text-sm">{selectedNode.betweennessCentrality}</strong>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-[10px] text-gray-400 block">PageRank</span>
-                    <strong className="text-white font-mono text-sm">{selectedNode.pageRank}</strong>
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] text-slate-500 block">PageRank</span>
+                    <strong className="text-slate-900 font-mono text-sm">{selectedNode.pageRank}</strong>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-[10px] text-gray-400 block">Followers</span>
-                    <strong className="text-white font-mono text-sm">{formatNumber(selectedNode.followers)}</strong>
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] text-slate-500 block">Followers</span>
+                    <strong className="text-slate-900 font-mono text-sm">{formatNumber(selectedNode.followers)}</strong>
                   </div>
-                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-[10px] text-gray-400 block">Amplification</span>
-                    <strong className="text-accent-light font-mono text-sm">{selectedNode.amplificationPower}x</strong>
+                  <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200">
+                    <span className="text-[10px] text-slate-500 block">Amplification</span>
+                    <strong className="text-amber-700 font-mono text-sm">{selectedNode.amplificationPower}x</strong>
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-gray-300 block mb-1.5">Top Conversation Topics:</label>
+                  <label className="text-xs font-semibold text-slate-700 block mb-1.5">Top Conversation Topics:</label>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedNode.topTopics.map((top, i) => (
-                      <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/5">
+                      <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                         {top}
                       </span>
                     ))}
@@ -294,12 +294,12 @@ export default function NetworkPage() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-12 text-gray-400 text-xs">Click any node to inspect profile</div>
+            <div className="text-center py-12 text-slate-500 text-xs">Click any node to inspect profile</div>
           )}
 
-          <div className="pt-3 border-t border-white/5 text-center">
-            <span className="text-[11px] text-gray-400">Assigned Community: </span>
-            <strong className="text-white text-xs">{selectedNode?.community}</strong>
+          <div className="pt-3 border-t border-slate-200 text-center">
+            <span className="text-[11px] text-slate-500">Assigned Community: </span>
+            <strong className="text-slate-900 text-xs">{selectedNode?.community}</strong>
           </div>
         </div>
       </div>
@@ -308,38 +308,38 @@ export default function NetworkPage() {
       <div className="glass-panel p-5">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-accent-light" />
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Community Modularity Partitions</h3>
+            <Layers className="w-4 h-4 text-amber-600" />
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Community Modularity Partitions</h3>
           </div>
-          <span className="text-xs font-mono text-gray-400">Louvain Community Detection</span>
+          <span className="text-xs font-mono text-slate-500">Louvain Community Detection</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {data.communities.map((comm: CommunityCluster) => (
             <div
               key={comm.id}
-              className="p-4 rounded-xl bg-navy-800/80 border border-white/5 hover:border-accent/40 transition flex flex-col justify-between"
+              className="p-4 rounded-xl bg-white border border-slate-200 hover:border-amber-500 shadow-sm transition flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-3 h-3 rounded-full" style={{ backgroundColor: comm.color }} />
-                  <h4 className="text-xs font-bold text-white">{comm.name}</h4>
+                  <h4 className="text-xs font-bold text-slate-900">{comm.name}</h4>
                 </div>
-                <p className="text-[11px] text-gray-300 leading-relaxed mb-3">{comm.summary}</p>
+                <p className="text-[11px] text-slate-600 leading-relaxed mb-3">{comm.summary}</p>
               </div>
 
-              <div className="space-y-1.5 pt-2.5 border-t border-white/5 text-[11px] font-mono">
-                <div className="flex justify-between text-gray-400">
+              <div className="space-y-1.5 pt-2.5 border-t border-slate-100 text-[11px] font-mono">
+                <div className="flex justify-between text-slate-500">
                   <span>Reach:</span>
-                  <span className="text-white">{formatNumber(comm.totalReach)}</span>
+                  <span className="text-slate-900 font-semibold">{formatNumber(comm.totalReach)}</span>
                 </div>
-                <div className="flex justify-between text-gray-400">
+                <div className="flex justify-between text-slate-500">
                   <span>Modularity:</span>
-                  <span className="text-accent-light">{comm.modularityScore}</span>
+                  <span className="text-amber-700 font-semibold">{comm.modularityScore}</span>
                 </div>
-                <div className="flex justify-between text-gray-400">
+                <div className="flex justify-between text-slate-500">
                   <span>Sentiment:</span>
-                  <span className="text-emerald-400">{comm.dominantSentiment}</span>
+                  <span className="text-emerald-700 font-semibold">{comm.dominantSentiment}</span>
                 </div>
               </div>
             </div>

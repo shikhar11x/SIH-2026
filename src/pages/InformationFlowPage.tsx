@@ -66,8 +66,8 @@ export default function InformationFlowPage() {
             onClick={() => setIsPlaying(!isPlaying)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition border ${
               isPlaying
-                ? 'bg-rose-500/10 text-rose-400 border-rose-500/25 hover:bg-rose-500/20'
-                : 'bg-accent/15 text-accent-light border-accent/25 hover:bg-accent/25'
+                ? 'bg-rose-50 text-rose-700 border-rose-200 hover:bg-rose-100'
+                : 'bg-orange-50 text-orange-700 border-orange-200 hover:bg-orange-100'
             }`}
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -77,16 +77,16 @@ export default function InformationFlowPage() {
       />
 
       {/* Narrative Header Banner */}
-      <div className="glass-panel p-5 bg-gradient-to-r from-accent/15 via-navy-800/80 to-purple-900/10 border-accent/30">
+      <div className="glass-panel p-5 bg-gradient-to-r from-orange-50 via-white to-amber-50 border-orange-200">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span className="text-[10px] font-bold uppercase text-accent-light tracking-wider font-mono">
+            <span className="text-[10px] font-bold uppercase text-orange-700 tracking-wider font-mono">
               Active Tracked Narrative Stream
             </span>
-            <h3 className="text-lg font-bold text-white mt-0.5">{data.narrativeTitle}</h3>
+            <h3 className="text-lg font-bold text-slate-900 mt-0.5">{data.narrativeTitle}</h3>
           </div>
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
               Virality R₀: {data.propagationStats.viralityCoefficient}
             </span>
           </div>
@@ -109,7 +109,7 @@ export default function InformationFlowPage() {
           subtitle="Super-spreading trajectory (>2.0)"
           trend="up"
           icon={Zap}
-          iconColor="text-emerald-400"
+          iconColor="text-emerald-600"
         />
         <StatCard
           title="Cross-Platform Divergence"
@@ -124,7 +124,7 @@ export default function InformationFlowPage() {
           subtitle="Amplifying 68% of volume"
           trend="up"
           icon={Radio}
-          iconColor="text-purple-400"
+          iconColor="text-amber-600"
         />
       </div>
 
@@ -132,10 +132,10 @@ export default function InformationFlowPage() {
       <div className="glass-panel p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Multi-Stage Narrative Diffusion Pathway</h3>
-            <p className="text-xs text-gray-400">Click any stage to inspect transmission velocity and active nodes</p>
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Multi-Stage Narrative Diffusion Pathway</h3>
+            <p className="text-xs text-slate-500">Click any stage to inspect transmission velocity and active nodes</p>
           </div>
-          <span className="text-xs font-mono text-accent-light">Step {activeStageIndex + 1} of 4</span>
+          <span className="text-xs font-mono font-semibold text-orange-700">Step {activeStageIndex + 1} of 4</span>
         </div>
 
         {/* Stepper Buttons */}
@@ -152,15 +152,15 @@ export default function InformationFlowPage() {
                 }}
                 className={`p-3.5 rounded-xl text-left border transition relative overflow-hidden ${
                   isActive
-                    ? 'bg-accent/20 border-accent text-white shadow-[0_0_20px_rgba(99,102,241,0.25)]'
-                    : 'bg-white/5 border-white/5 text-gray-400 hover:text-gray-200 hover:bg-white/10'
+                    ? 'bg-orange-50 border-orange-500 text-slate-900 shadow-sm ring-2 ring-orange-400/20'
+                    : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono font-bold text-accent-light">{stage.timeframe}</span>
-                  <span className="text-[10px] font-mono text-gray-400">{formatNumber(stage.reach)} reach</span>
+                  <span className="text-[10px] font-mono font-bold text-orange-700">{stage.timeframe}</span>
+                  <span className="text-[10px] font-mono text-slate-500">{formatNumber(stage.reach)} reach</span>
                 </div>
-                <h4 className="text-xs font-bold text-white leading-snug">{stage.stageName}</h4>
+                <h4 className="text-xs font-bold text-slate-900 leading-snug">{stage.stageName}</h4>
               </button>
             );
           })}
@@ -171,30 +171,30 @@ export default function InformationFlowPage() {
           key={currentStage.id}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-5 rounded-xl bg-navy-900/90 border border-white/10 space-y-4"
+          className="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-4"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-white/5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
             <div>
-              <span className="text-[10px] font-mono text-accent-light uppercase font-bold">{currentStage.timeframe}</span>
-              <h4 className="text-base font-bold text-white">{currentStage.stageName}</h4>
-              <p className="text-xs text-gray-300 mt-1">{currentStage.description}</p>
+              <span className="text-[10px] font-mono text-orange-700 uppercase font-bold">{currentStage.timeframe}</span>
+              <h4 className="text-base font-bold text-slate-900">{currentStage.stageName}</h4>
+              <p className="text-xs text-slate-600 mt-1">{currentStage.description}</p>
             </div>
             <div className="flex items-center gap-3 text-xs font-mono">
-              <span className="text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
+              <span className="text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 font-semibold">
                 {currentStage.sentimentScore}/100 Sentiment
               </span>
-              <span className="text-accent-light bg-accent/10 px-2.5 py-1 rounded border border-accent/20">
+              <span className="text-orange-700 bg-orange-50 px-2.5 py-1 rounded border border-orange-200 font-semibold">
                 {currentStage.propagationSpeed}
               </span>
             </div>
           </div>
 
           <div>
-            <h5 className="text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Stage Milestones:</h5>
+            <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Stage Milestones:</h5>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {currentStage.keyEvents.map((evt, i) => (
-                <div key={i} className="p-3 rounded-lg bg-navy-950/80 border border-white/5 text-xs text-gray-200">
-                  <span className="text-accent-light font-bold block mb-0.5">#{i + 1}</span>
+                <div key={i} className="p-3 rounded-lg bg-white border border-slate-200 text-xs text-slate-700 shadow-sm">
+                  <span className="text-orange-600 font-bold block mb-0.5">#{i + 1}</span>
                   {evt}
                 </div>
               ))}
@@ -207,16 +207,16 @@ export default function InformationFlowPage() {
       <div className="glass-panel p-5">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <GitFork className="w-4 h-4 text-accent-light" />
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Cross-Platform Cascade Hop Matrix</h3>
+            <GitFork className="w-4 h-4 text-orange-600" />
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Cross-Platform Cascade Hop Matrix</h3>
           </div>
-          <span className="text-xs font-mono text-gray-400">Recorded Dissemination Hops</span>
+          <span className="text-xs font-mono text-slate-500">Recorded Dissemination Hops</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-white/5 text-gray-400 font-semibold uppercase text-[10px] tracking-wider">
+              <tr className="border-b border-slate-200 text-slate-500 font-semibold uppercase text-[10px] tracking-wider">
                 <th className="py-3 px-3">Origin Node / Platform</th>
                 <th className="py-3 px-3">Destination Channel</th>
                 <th className="py-3 px-3 text-center">Hops</th>
@@ -225,25 +225,25 @@ export default function InformationFlowPage() {
                 <th className="py-3 px-3 text-right">Sentiment Shift</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-slate-100">
               {data.cascades.map((c: CascadeBranch) => (
-                <tr key={c.id} className="hover:bg-white/5 transition">
-                  <td className="py-3.5 px-3 font-semibold text-white">
-                    <span className="text-accent-light block font-mono text-[10px]">{c.originPlatform}</span>
+                <tr key={c.id} className="hover:bg-slate-50 transition">
+                  <td className="py-3.5 px-3 font-semibold text-slate-900">
+                    <span className="text-orange-700 block font-mono text-[10px]">{c.originPlatform}</span>
                     {c.originNode}
                   </td>
-                  <td className="py-3.5 px-3 font-medium text-gray-200">{c.destinationPlatform}</td>
+                  <td className="py-3.5 px-3 font-medium text-slate-700">{c.destinationPlatform}</td>
                   <td className="py-3.5 px-3 text-center font-mono">
-                    <span className="px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/5">
+                    <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                       {c.hopCount} hop
                     </span>
                   </td>
-                  <td className="py-3.5 px-3 text-right font-mono font-bold text-emerald-400">
+                  <td className="py-3.5 px-3 text-right font-mono font-bold text-emerald-600">
                     +{c.reachMultiplier}x
                   </td>
-                  <td className="py-3.5 px-3 text-right font-mono text-gray-400">{c.lagTimeMinutes} mins</td>
+                  <td className="py-3.5 px-3 text-right font-mono text-slate-500">{c.lagTimeMinutes} mins</td>
                   <td className="py-3.5 px-3 text-right font-mono font-bold">
-                    <span className={c.sentimentShift >= 0 ? 'text-emerald-400' : 'text-rose-400'}>
+                    <span className={c.sentimentShift >= 0 ? 'text-emerald-600' : 'text-rose-600'}>
                       {c.sentimentShift > 0 ? `+${c.sentimentShift}%` : `${c.sentimentShift}%`}
                     </span>
                   </td>

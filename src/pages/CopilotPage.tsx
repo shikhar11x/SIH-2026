@@ -60,28 +60,28 @@ export default function CopilotPage() {
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] pb-2 space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-white/5 flex-shrink-0">
+      <div className="flex items-center justify-between pb-3 border-b border-slate-200 flex-shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center text-accent-light">
+          <div className="w-10 h-10 rounded-xl bg-orange-100 border border-orange-300 flex items-center justify-center text-orange-700">
             <Bot className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-bold text-white">SocialPulse AI Copilot</h2>
-              <span className="flex items-center gap-1 text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <h2 className="text-lg font-bold text-slate-900">Bharat Social Intelligence AI Copilot</h2>
+              <span className="flex items-center gap-1 text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-mono font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                 Context: 2.4M Posts Active
               </span>
             </div>
-            <p className="text-xs text-gray-400">
-              Interactive conversational intelligence engine with continuous narrative citations
+            <p className="text-xs text-slate-500">
+              Conversational intelligence engine with continuous multi-platform narrative citations
             </p>
           </div>
         </div>
       </div>
 
       {/* Main Chat Scroll Container */}
-      <div className="flex-1 glass-panel p-4 lg:p-6 overflow-y-auto space-y-5 bg-navy-900/60 border border-white/5 rounded-2xl">
+      <div className="flex-1 glass-panel p-4 lg:p-6 overflow-y-auto space-y-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
         <AnimatePresence>
           {messages.map((msg) => {
             const isAssistant = msg.sender === 'assistant';
@@ -95,10 +95,10 @@ export default function CopilotPage() {
               >
                 {/* Avatar */}
                 <div
-                  className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 ${
+                  className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 shadow-sm ${
                     isAssistant
-                      ? 'bg-gradient-to-br from-accent to-purple-600 text-white shadow-glow-sm'
-                      : 'bg-navy-700 text-gray-200 border border-white/10'
+                      ? 'bg-gradient-to-br from-orange-500 to-amber-600 text-white'
+                      : 'bg-slate-800 text-white'
                   }`}
                 >
                   {isAssistant ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
@@ -108,8 +108,8 @@ export default function CopilotPage() {
                 <div
                   className={`max-w-2xl rounded-2xl p-4 text-xs leading-relaxed space-y-3 ${
                     isAssistant
-                      ? 'bg-navy-800/95 border border-white/10 text-gray-200 shadow-xl'
-                      : 'bg-accent text-white font-medium shadow-glow-sm'
+                      ? 'bg-slate-50 border border-slate-200 text-slate-800 shadow-sm'
+                      : 'bg-orange-600 text-white font-medium shadow-sm'
                   }`}
                 >
                   {/* Text */}
@@ -117,9 +117,9 @@ export default function CopilotPage() {
 
                   {/* Inline Chart Insight if present */}
                   {msg.chartInsight && (
-                    <div className="p-3 rounded-xl bg-navy-900/90 border border-white/10 my-3">
+                    <div className="p-3 rounded-xl bg-white border border-slate-200 my-3">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-[11px] font-bold text-accent-light uppercase tracking-wider font-mono">
+                        <span className="text-[11px] font-bold text-orange-700 uppercase tracking-wider font-mono">
                           {msg.chartInsight.title}
                         </span>
                       </div>
@@ -129,10 +129,10 @@ export default function CopilotPage() {
                             <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} />
                             <YAxis stroke="#64748b" fontSize={10} domain={[40, 100]} tickLine={false} />
                             <Tooltip
-                              contentStyle={{ backgroundColor: '#0f1629', borderColor: '#374151', borderRadius: '8px' }}
+                              contentStyle={{ backgroundColor: '#ffffff', borderColor: '#e2e8f0', borderRadius: '8px', color: '#0f172a' }}
                               formatter={(val: any) => [`${val}%`, 'Sentiment']}
                             />
-                            <Line type="monotone" dataKey="value" stroke="#10b981" strokeWidth={2.5} dot={{ r: 4 }} />
+                            <Line type="monotone" dataKey="value" stroke="#16a34a" strokeWidth={2.5} dot={{ r: 4 }} />
                           </LineChart>
                         </ResponsiveContainer>
                       </div>
@@ -141,18 +141,18 @@ export default function CopilotPage() {
 
                   {/* Citations from social feeds */}
                   {msg.citations && msg.citations.length > 0 && (
-                    <div className="space-y-2 pt-2 border-t border-white/5">
-                      <span className="text-[10px] font-mono text-gray-400 uppercase font-bold tracking-wider block">
+                    <div className="space-y-2 pt-2 border-t border-slate-200">
+                      <span className="text-[10px] font-mono text-slate-500 uppercase font-bold tracking-wider block">
                         Verified Social Citations:
                       </span>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {msg.citations.map((cite, i) => (
-                          <div key={i} className="p-2.5 rounded-lg bg-navy-900/80 border border-white/5 space-y-1">
+                          <div key={i} className="p-2.5 rounded-lg bg-white border border-slate-200 space-y-1">
                             <div className="flex items-center justify-between text-[10px]">
-                              <span className="font-bold text-accent-light">{cite.author}</span>
+                              <span className="font-bold text-orange-700">{cite.author}</span>
                               <PlatformBadge platform={cite.platform} size="sm" showLabel={false} />
                             </div>
-                            <p className="text-[11px] text-gray-300 italic">"{cite.text}"</p>
+                            <p className="text-[11px] text-slate-600 italic">"{cite.text}"</p>
                           </div>
                         ))}
                       </div>
@@ -161,12 +161,12 @@ export default function CopilotPage() {
 
                   {/* Suggested Actions */}
                   {msg.suggestedActions && msg.suggestedActions.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-200">
                       {msg.suggestedActions.map((action, i) => (
                         <button
                           key={i}
                           onClick={() => handleActionClick(action)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-accent/15 hover:bg-accent/25 text-accent-light border border-accent/30 text-[11px] font-semibold transition"
+                          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-700 border border-orange-200 text-[11px] font-semibold transition"
                         >
                           <span>{action.label}</span>
                           <ArrowRight className="w-3 h-3" />
@@ -185,11 +185,11 @@ export default function CopilotPage() {
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center gap-3"
             >
-              <div className="w-8 h-8 rounded-xl bg-accent/20 border border-accent/40 flex items-center justify-center text-accent-light">
+              <div className="w-8 h-8 rounded-xl bg-orange-100 border border-orange-300 flex items-center justify-center text-orange-700">
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
-              <div className="p-3.5 rounded-2xl bg-navy-800 border border-white/10 text-xs text-gray-400 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-accent-light animate-ping" />
+              <div className="p-3.5 rounded-2xl bg-white border border-slate-200 text-xs text-slate-600 flex items-center gap-2 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-orange-600 animate-ping" />
                 <span>Synthesizing multi-platform intelligence...</span>
               </div>
             </motion.div>
@@ -200,14 +200,14 @@ export default function CopilotPage() {
 
       {/* Suggested Prompt Presets Toolbar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 flex-shrink-0">
-        <span className="text-[10px] font-mono text-gray-500 uppercase flex items-center gap-1 flex-shrink-0">
-          <Sparkles className="w-3 h-3 text-accent-light" /> Try asking:
+        <span className="text-[10px] font-mono text-slate-500 uppercase flex items-center gap-1 flex-shrink-0 font-semibold">
+          <Sparkles className="w-3 h-3 text-orange-600" /> Try asking:
         </span>
         {COPILOT_PRESETS.map((preset, idx) => (
           <button
             key={idx}
             onClick={() => handleSendMessage(preset)}
-            className="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] text-gray-300 hover:text-white whitespace-nowrap transition flex-shrink-0"
+            className="px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-[11px] text-slate-700 hover:text-slate-900 whitespace-nowrap transition flex-shrink-0"
           >
             {preset}
           </button>
@@ -220,19 +220,19 @@ export default function CopilotPage() {
           e.preventDefault();
           handleSendMessage();
         }}
-        className="flex items-center gap-2 p-1.5 glass-panel bg-navy-800/90 border border-white/10 rounded-2xl flex-shrink-0"
+        className="flex items-center gap-2 p-1.5 glass-panel bg-white border border-slate-200 rounded-2xl flex-shrink-0 shadow-sm"
       >
         <input
           type="text"
           placeholder="Ask AI Copilot to analyze narratives, compute risks, or compare communities..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="flex-1 bg-transparent px-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none"
+          className="flex-1 bg-transparent px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none"
         />
         <button
           type="submit"
           disabled={!inputValue.trim() || isTyping}
-          className="p-2.5 rounded-xl bg-accent hover:bg-accent-dark text-white transition shadow-glow disabled:opacity-40 disabled:cursor-not-allowed"
+          className="p-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white transition shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <Send className="w-4 h-4" />
         </button>

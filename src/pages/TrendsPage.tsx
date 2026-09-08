@@ -53,26 +53,26 @@ export default function TrendsPage() {
   const getLifecycleColor = (lc: string) => {
     switch (lc) {
       case 'peaking':
-        return 'bg-rose-500/15 text-rose-400 border-rose-500/25';
+        return 'bg-rose-50 text-rose-700 border-rose-200';
       case 'rising':
-        return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/25';
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
       case 'emerging':
-        return 'bg-purple-500/15 text-purple-400 border-purple-500/25';
+        return 'bg-orange-50 text-orange-700 border-orange-200';
       case 'saturated':
-        return 'bg-amber-500/15 text-amber-400 border-amber-500/25';
+        return 'bg-amber-50 text-amber-700 border-amber-200';
       case 'declining':
-        return 'bg-gray-500/15 text-gray-400 border-gray-500/25';
+        return 'bg-slate-100 text-slate-600 border-slate-200';
       default:
-        return 'bg-accent/15 text-accent-light border-accent/25';
+        return 'bg-blue-50 text-blue-700 border-blue-200';
     }
   };
 
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="Trend Intelligence & Early Warning Radar"
-        subtitle="Real-time viral acceleration algorithms detecting nascent narratives and volume anomalies"
-        tag="PREDICTIVE MOMENTUM"
+        title="National Trend Intelligence & Early Warning Radar"
+        subtitle="Real-time viral acceleration algorithms detecting nascent hashtags and social spikes across India"
+        tag="PREDICTIVE RADAR"
         onRefresh={loadTrends}
         onExport={() => setExportOpen(true)}
       />
@@ -85,7 +85,7 @@ export default function TrendsPage() {
           subtitle="43 above virality threshold"
           trend="up"
           icon={TrendingUp}
-          accentGlow
+          iconColor="text-orange-600"
         />
         <StatCard
           title="Viral Topic Clusters"
@@ -94,7 +94,7 @@ export default function TrendsPage() {
           changePeriod="avg growth"
           trend="up"
           icon={Flame}
-          iconColor="text-rose-400"
+          iconColor="text-rose-600"
         />
         <StatCard
           title="Highest Velocity Narrative"
@@ -102,7 +102,7 @@ export default function TrendsPage() {
           subtitle="16.2K mentions/hour"
           trend="up"
           icon={Zap}
-          iconColor="text-amber-400"
+          iconColor="text-amber-600"
         />
         <StatCard
           title="Early Warning Anomaly Alerts"
@@ -110,15 +110,15 @@ export default function TrendsPage() {
           subtitle="1 Critical alert active"
           trend="neutral"
           icon={AlertTriangle}
-          iconColor="text-rose-400"
+          iconColor="text-rose-600"
         />
       </div>
 
       {/* Early Warning Alert Feed */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <ShieldAlert className="w-4 h-4 text-rose-400 animate-pulse" />
-          <h3 className="text-xs font-bold text-white uppercase tracking-wider">Active Early Warning Alerts</h3>
+          <ShieldAlert className="w-4 h-4 text-rose-600 animate-pulse" />
+          <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">Active Early Warning Alerts</h3>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -129,35 +129,35 @@ export default function TrendsPage() {
             return (
               <div
                 key={alert.id}
-                className={`p-4 rounded-xl border glass-panel transition ${
+                className={`p-4 rounded-xl border bg-white shadow-sm transition ${
                   isCrit
-                    ? 'border-rose-500/30 bg-rose-500/5 hover:border-rose-500/50'
+                    ? 'border-rose-300 bg-rose-50/40 hover:border-rose-400'
                     : isWarn
-                    ? 'border-amber-500/30 bg-amber-500/5 hover:border-amber-500/50'
-                    : 'border-accent/30 bg-accent/5 hover:border-accent/50'
+                    ? 'border-amber-300 bg-amber-50/40 hover:border-amber-400'
+                    : 'border-orange-300 bg-orange-50/40 hover:border-orange-400'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <span
                     className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase font-mono ${
                       isCrit
-                        ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                        ? 'bg-rose-100 text-rose-800 border border-rose-200'
                         : isWarn
-                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                        : 'bg-accent/20 text-accent-light border border-accent/30'
+                        ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                        : 'bg-orange-100 text-orange-800 border border-orange-200'
                     }`}
                   >
                     {alert.severity} • {Math.round(alert.confidence * 100)}% Confidence
                   </span>
-                  <span className="text-[10px] font-mono text-gray-400">{alert.timestamp}</span>
+                  <span className="text-[10px] font-mono text-slate-500 font-bold">{alert.timestamp}</span>
                 </div>
 
-                <h4 className="text-xs font-bold text-white mb-1.5 leading-snug">{alert.title}</h4>
-                <p className="text-[11px] text-gray-300 leading-relaxed mb-3">{alert.summary}</p>
+                <h4 className="text-xs font-bold text-slate-900 mb-1.5 leading-snug">{alert.title}</h4>
+                <p className="text-[11px] text-slate-600 leading-relaxed mb-3 font-medium">{alert.summary}</p>
 
-                <div className="flex items-center justify-between pt-2 border-t border-white/5 text-[10px] text-gray-400 font-mono">
+                <div className="flex items-center justify-between pt-2 border-t border-slate-200 text-[10px] text-slate-500 font-mono font-semibold">
                   <span>Source: {alert.platformSource}</span>
-                  <span className="text-white font-bold">Impact: {alert.impactScore}/100</span>
+                  <span className="text-slate-900 font-bold">Impact: {alert.impactScore}/100</span>
                 </div>
               </div>
             );
@@ -166,16 +166,16 @@ export default function TrendsPage() {
       </div>
 
       {/* Trend Lifecycle Filter & Search Toolbar */}
-      <div className="glass-panel p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="glass-panel p-4 bg-white border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
         {/* Search */}
         <div className="relative flex-1 max-w-sm">
-          <Search className="w-4 h-4 text-gray-400 absolute left-3 top-2.5" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           <input
             type="text"
-            placeholder="Search topic or category..."
+            placeholder="Search hashtag or topic in India..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-navy-900 border border-white/10 rounded-xl pl-9 pr-3.5 py-1.5 text-xs text-white placeholder-gray-500 focus:border-accent outline-none"
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3.5 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:border-orange-500 outline-none"
           />
         </div>
 
@@ -185,10 +185,10 @@ export default function TrendsPage() {
             <button
               key={lc}
               onClick={() => setSelectedLifecycle(lc)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold capitalize whitespace-nowrap transition ${
+              className={`px-3 py-1 rounded-lg text-xs font-bold capitalize whitespace-nowrap transition ${
                 selectedLifecycle === lc
-                  ? 'bg-accent text-white shadow-glow-sm'
-                  : 'text-gray-400 hover:text-white bg-navy-900/60'
+                  ? 'bg-orange-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200'
               }`}
             >
               {lc}
@@ -207,16 +207,16 @@ export default function TrendsPage() {
               key={t.id}
               whileHover={{ y: -2 }}
               onClick={() => setSelectedTrend(t)}
-              className="glass-panel p-5 border border-white/5 hover:border-accent/40 transition cursor-pointer flex flex-col justify-between"
+              className="glass-panel p-5 bg-white border border-slate-200 hover:border-orange-300 transition cursor-pointer flex flex-col justify-between shadow-sm"
             >
               <div>
                 {/* Header */}
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <span className="text-[10px] uppercase font-bold text-accent-light tracking-wider mb-0.5 block font-mono">
+                    <span className="text-[10px] uppercase font-bold text-orange-700 tracking-wider mb-0.5 block font-mono">
                       {t.category}
                     </span>
-                    <h3 className="text-base font-bold text-white hover:text-accent-light transition">{t.topic}</h3>
+                    <h3 className="text-sm font-bold text-slate-900 hover:text-orange-600 transition">{t.topic}</h3>
                   </div>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase border ${getLifecycleColor(t.lifecycle)}`}>
                     {t.lifecycle}
@@ -224,18 +224,18 @@ export default function TrendsPage() {
                 </div>
 
                 {/* Key stats row */}
-                <div className="grid grid-cols-3 gap-2 py-2.5 my-2 border-y border-white/5 text-center">
+                <div className="grid grid-cols-3 gap-2 py-2.5 my-2 border-y border-slate-100 text-center">
                   <div>
-                    <span className="text-xs font-bold text-white block">{formatNumber(t.mentions)}</span>
-                    <span className="text-[10px] text-gray-400">Mentions</span>
+                    <span className="text-xs font-bold text-slate-900 block">{formatNumber(t.mentions)}</span>
+                    <span className="text-[10px] text-slate-500">Mentions</span>
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-emerald-400 block">+{t.growth24h}%</span>
-                    <span className="text-[10px] text-gray-400">24h Growth</span>
+                    <span className="text-xs font-bold text-emerald-700 block">+{t.growth24h}%</span>
+                    <span className="text-[10px] text-slate-500">24h Growth</span>
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-white block">{formatNumber(t.velocity)}/h</span>
-                    <span className="text-[10px] text-gray-400">Velocity</span>
+                    <span className="text-xs font-bold text-slate-900 block">{formatNumber(t.velocity)}/h</span>
+                    <span className="text-[10px] text-slate-500">Velocity</span>
                   </div>
                 </div>
 
@@ -245,11 +245,11 @@ export default function TrendsPage() {
                     <AreaChart data={sparklineData}>
                       <defs>
                         <linearGradient id={`gradient-${t.id}`} x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#6366f1" stopOpacity={0.4} />
-                          <stop offset="100%" stopColor="#6366f1" stopOpacity={0.0} />
+                          <stop offset="0%" stopColor="#ea580c" stopOpacity={0.3} />
+                          <stop offset="100%" stopColor="#ea580c" stopOpacity={0.0} />
                         </linearGradient>
                       </defs>
-                      <Area type="monotone" dataKey="val" stroke="#818cf8" strokeWidth={2} fill={`url(#gradient-${t.id})`} />
+                      <Area type="monotone" dataKey="val" stroke="#ea580c" strokeWidth={2} fill={`url(#gradient-${t.id})`} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
@@ -257,16 +257,16 @@ export default function TrendsPage() {
                 {/* Hashtags */}
                 <div className="flex flex-wrap gap-1 mb-3">
                   {t.topHashtags.slice(0, 3).map((tag, i) => (
-                    <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-white/5 text-gray-400">
+                    <span key={i} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-2.5 border-t border-white/5 text-[11px] text-gray-400 font-mono">
+              <div className="flex items-center justify-between pt-2.5 border-t border-slate-100 text-[11px] text-slate-500 font-mono font-semibold">
                 <span>Peak: {t.predictedPeak}</span>
-                <span className="text-emerald-400 font-semibold">{t.sentimentScore}/100 Sent</span>
+                <span className="text-emerald-700 font-bold">{t.sentimentScore}/100 Sent</span>
               </div>
             </motion.div>
           );
@@ -276,44 +276,44 @@ export default function TrendsPage() {
       {/* Trend Detail Drawer / Modal */}
       <AnimatePresence>
         {selectedTrend && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-xl glass-panel bg-navy-800/95 border border-white/10 p-6 rounded-2xl relative shadow-2xl space-y-4"
+              className="w-full max-w-xl bg-white border border-slate-200 p-6 rounded-2xl relative shadow-2xl space-y-4"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-xs uppercase font-bold text-accent-light font-mono">{selectedTrend.category}</span>
-                  <h3 className="text-xl font-bold text-white">{selectedTrend.topic}</h3>
+                  <span className="text-xs uppercase font-bold text-orange-700 font-mono">{selectedTrend.category}</span>
+                  <h3 className="text-lg font-bold text-slate-900">{selectedTrend.topic}</h3>
                 </div>
                 <button
                   onClick={() => setSelectedTrend(null)}
-                  className="p-1 rounded-lg text-gray-400 hover:text-white"
+                  className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
                 >
                   ✕
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 p-3 bg-navy-900 rounded-xl text-center">
+              <div className="grid grid-cols-3 gap-3 p-3 bg-slate-50 rounded-xl text-center border border-slate-200">
                 <div>
-                  <span className="text-xs text-gray-400">Total Mentions</span>
-                  <p className="text-base font-bold text-white">{formatNumber(selectedTrend.mentions)}</p>
+                  <span className="text-xs text-slate-500 font-medium">Total Mentions</span>
+                  <p className="text-base font-bold text-slate-900">{formatNumber(selectedTrend.mentions)}</p>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-400">Hourly Velocity</span>
-                  <p className="text-base font-bold text-accent-light">{formatNumber(selectedTrend.velocity)} / hr</p>
+                  <span className="text-xs text-slate-500 font-medium">Hourly Velocity</span>
+                  <p className="text-base font-bold text-orange-600">{formatNumber(selectedTrend.velocity)} / hr</p>
                 </div>
                 <div>
-                  <span className="text-xs text-gray-400">Acceleration</span>
-                  <p className="text-base font-bold text-emerald-400">+{selectedTrend.acceleration}% / hr²</p>
+                  <span className="text-xs text-slate-500 font-medium">Acceleration</span>
+                  <p className="text-base font-bold text-emerald-700">+{selectedTrend.acceleration}% / hr²</p>
                 </div>
               </div>
 
               <div className="space-y-2 text-xs">
-                <h4 className="font-bold text-gray-300">Key Catalysts & Drivers:</h4>
-                <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <h4 className="font-bold text-slate-800">Key Drivers:</h4>
+                <ul className="list-disc list-inside text-slate-600 space-y-1 font-medium">
                   {selectedTrend.keyDrivers.map((d, i) => (
                     <li key={i}>{d}</li>
                   ))}
@@ -321,20 +321,20 @@ export default function TrendsPage() {
               </div>
 
               <div className="space-y-2 text-xs">
-                <h4 className="font-bold text-gray-300">Co-Occurring Entities:</h4>
+                <h4 className="font-bold text-slate-800">Related Entities:</h4>
                 <div className="flex flex-wrap gap-1.5">
                   {selectedTrend.relatedEntities.map((ent, i) => (
-                    <span key={i} className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white font-mono">
+                    <span key={i} className="px-2.5 py-1 rounded bg-slate-100 border border-slate-200 text-slate-700 font-mono font-semibold">
                       {ent}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="flex justify-end pt-3 border-t border-white/5">
+              <div className="flex justify-end pt-3 border-t border-slate-200">
                 <button
                   onClick={() => setSelectedTrend(null)}
-                  className="px-4 py-2 bg-accent text-white rounded-xl text-xs font-semibold hover:bg-accent-dark transition"
+                  className="px-4 py-2 bg-orange-600 text-white rounded-xl text-xs font-bold hover:bg-orange-700 transition shadow-sm"
                 >
                   Close Inspection
                 </button>

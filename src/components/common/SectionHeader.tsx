@@ -23,18 +23,18 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   isRefreshing = false,
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-2 border-b border-slate-200/80">
       <div>
-        <div className="flex items-center gap-2 mb-1">
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">{title}</h1>
+        <div className="flex items-center gap-2.5 mb-1">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">{title}</h1>
           {tag && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-accent/15 text-accent-light border border-accent/25">
-              <Sparkles className="w-3 h-3" />
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-orange-50 text-orange-700 border border-orange-200">
+              <Sparkles className="w-3 h-3 text-orange-600" />
               {tag}
             </span>
           )}
         </div>
-        {subtitle && <p className="text-xs sm:text-sm text-gray-400">{subtitle}</p>}
+        {subtitle && <p className="text-xs sm:text-sm text-slate-500 font-medium">{subtitle}</p>}
       </div>
 
       <div className="flex items-center gap-2 flex-wrap">
@@ -42,9 +42,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         {onFilter && (
           <button
             onClick={onFilter}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-300 bg-white/5 border border-white/10 hover:bg-white/10 hover:text-white transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition shadow-sm"
           >
-            <Filter className="w-3.5 h-3.5" />
+            <Filter className="w-3.5 h-3.5 text-slate-500" />
             <span>Filter</span>
           </button>
         )}
@@ -52,19 +52,19 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           <button
             onClick={onRefresh}
             disabled={isRefreshing}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-300 bg-white/5 border border-white/10 hover:bg-white/10 hover:text-white transition disabled:opacity-50"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition shadow-sm disabled:opacity-50"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-accent-light' : ''}`} />
-            <span>Sync</span>
+            <RefreshCw className={`w-3.5 h-3.5 text-slate-500 ${isRefreshing ? 'animate-spin text-orange-600' : ''}`} />
+            <span>Sync Feed</span>
           </button>
         )}
         {onExport && (
           <button
             onClick={onExport}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-accent-light bg-accent/10 border border-accent/25 hover:bg-accent/20 transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-orange-700 bg-orange-50 border border-orange-200 hover:bg-orange-100 transition shadow-sm"
           >
-            <Download className="w-3.5 h-3.5" />
-            <span>Export</span>
+            <Download className="w-3.5 h-3.5 text-orange-600" />
+            <span>Export Report</span>
           </button>
         )}
       </div>

@@ -92,44 +92,44 @@ export default function PlatformsPage() {
   return (
     <div className="space-y-6 pb-12">
       <SectionHeader
-        title="Platform Connectors & Hub"
-        subtitle="Manage live decahose streams, webhooks, and multi-channel social ingestion pipelines"
-        tag="STREAM CONNECTIVITY"
+        title="Real-Time Platform Feeds & Ingestion Connectors"
+        subtitle="Live streaming decahose hooks from X, Telegram, Reddit, and YouTube with continuous normalization"
+        tag="LIVE STREAMS"
         onRefresh={loadPlatforms}
       />
 
       {/* Platform Statistics summary */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="glass-panel p-4 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+        <div className="glass-panel p-4 flex items-center gap-4 bg-white border border-slate-200">
+          <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-gray-400 uppercase font-semibold">Active Connectors</p>
-            <h4 className="text-xl font-bold text-white">6 / 8 Connected</h4>
-            <p className="text-[11px] text-emerald-400 font-mono">99.98% Stream Uptime</p>
+            <p className="text-xs text-slate-500 uppercase font-bold">Active Live Feeds</p>
+            <h4 className="text-xl font-extrabold text-slate-900">6 Connected Channels</h4>
+            <p className="text-[11px] text-emerald-700 font-mono font-bold">99.98% Stream Uptime</p>
           </div>
         </div>
 
-        <div className="glass-panel p-4 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent-light">
+        <div className="glass-panel p-4 flex items-center gap-4 bg-white border border-slate-200">
+          <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600">
             <Radio className="w-6 h-6 animate-pulse" />
           </div>
           <div>
-            <p className="text-xs text-gray-400 uppercase font-semibold">Aggregated Ingestion Rate</p>
-            <h4 className="text-xl font-bold text-white">342 msgs / sec</h4>
-            <p className="text-[11px] text-gray-400">Sub-500ms neural indexing</p>
+            <p className="text-xs text-slate-500 uppercase font-bold">Aggregated Fetch Rate</p>
+            <h4 className="text-xl font-extrabold text-slate-900">342 msgs / sec</h4>
+            <p className="text-[11px] text-slate-500 font-medium">Sub-500ms neural indexing</p>
           </div>
         </div>
 
-        <div className="glass-panel p-4 flex items-center gap-4">
-          <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+        <div className="glass-panel p-4 flex items-center gap-4 bg-white border border-slate-200">
+          <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-700">
             <Shield className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xs text-gray-400 uppercase font-semibold">Rate Limit Shield</p>
-            <h4 className="text-xl font-bold text-white">Zero Violations</h4>
-            <p className="text-[11px] text-purple-400">Dynamic adaptive backoff</p>
+            <p className="text-xs text-slate-500 uppercase font-bold">Rate Limit Shield</p>
+            <h4 className="text-xl font-extrabold text-slate-900">Zero Violations</h4>
+            <p className="text-[11px] text-blue-700 font-medium">Dynamic backoff active</p>
           </div>
         </div>
       </div>
@@ -143,29 +143,29 @@ export default function PlatformsPage() {
           return (
             <motion.div
               key={p.id}
-              whileHover={{ y: -3 }}
-              className="glass-panel p-5 border border-white/5 hover:border-accent/40 transition flex flex-col justify-between"
+              whileHover={{ y: -2 }}
+              className="glass-panel p-5 bg-white border border-slate-200 hover:border-orange-300 transition flex flex-col justify-between shadow-sm"
             >
               <div>
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center text-white shadow-lg"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center text-white shadow-sm"
                       style={{ backgroundColor: p.color }}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-base text-white">{p.name}</h3>
+                      <h3 className="font-extrabold text-sm text-slate-900">{p.name}</h3>
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <span
                           className={`w-2 h-2 rounded-full ${
-                            isConnected ? 'bg-emerald-400 animate-pulse' : 'bg-gray-500'
+                            isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-slate-300'
                           }`}
                         />
-                        <span className="text-[11px] font-mono capitalize text-gray-400">
-                          {isConnected ? 'Live Streaming' : 'Available'}
+                        <span className="text-[11px] font-mono capitalize text-slate-500 font-semibold">
+                          {isConnected ? 'Realtime Streaming' : 'Available'}
                         </span>
                       </div>
                     </div>
@@ -173,36 +173,36 @@ export default function PlatformsPage() {
 
                   <button
                     onClick={() => handleToggleSync(p)}
-                    className={`px-3 py-1 rounded-full text-xs font-semibold transition border ${
+                    className={`px-3 py-1 rounded-full text-xs font-bold transition border ${
                       isConnected
-                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/25 hover:bg-emerald-500/20'
-                        : 'bg-white/5 text-gray-400 border-white/10 hover:bg-white/10 hover:text-white'
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
+                        : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
                     }`}
                   >
-                    {isConnected ? 'Active' : 'Connect'}
+                    {isConnected ? 'Live' : 'Connect'}
                   </button>
                 </div>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-2 py-3 border-y border-white/5 my-3 text-center">
+                <div className="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 my-3 text-center">
                   <div>
-                    <span className="text-xs font-bold text-white block">{formatNumber(p.stats.totalPosts)}</span>
-                    <span className="text-[10px] text-gray-400">Posts Ingested</span>
+                    <span className="text-xs font-bold text-slate-900 block">{formatNumber(p.stats.totalPosts)}</span>
+                    <span className="text-[10px] text-slate-500">Ingested</span>
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-white block">{formatNumber(p.stats.totalUsers)}</span>
-                    <span className="text-[10px] text-gray-400">Unique Users</span>
+                    <span className="text-xs font-bold text-slate-900 block">{formatNumber(p.stats.totalUsers)}</span>
+                    <span className="text-[10px] text-slate-500">Accounts</span>
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-emerald-400 block">{p.stats.engagement}%</span>
-                    <span className="text-[10px] text-gray-400">Avg Engage</span>
+                    <span className="text-xs font-bold text-emerald-700 block">{p.stats.engagement}%</span>
+                    <span className="text-[10px] text-slate-500">Avg Engage</span>
                   </div>
                 </div>
 
                 {/* Capabilities pills */}
                 <div className="flex items-center gap-1.5 flex-wrap my-3">
                   {p.capabilities.map((cap, i) => (
-                    <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-300 border border-white/5">
+                    <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200 font-medium">
                       {cap}
                     </span>
                   ))}
@@ -210,14 +210,14 @@ export default function PlatformsPage() {
               </div>
 
               {/* Footer action */}
-              <div className="flex items-center justify-between pt-3 border-t border-white/5 mt-2">
-                <span className="text-[11px] text-gray-500 font-mono">Sync: Continuous Webhook</span>
+              <div className="flex items-center justify-between pt-3 border-t border-slate-100 mt-2">
+                <span className="text-[11px] text-slate-400 font-mono">Sync: Decahose Hook</span>
                 <button
                   onClick={() => openConfig(p)}
-                  className="flex items-center gap-1 text-xs text-accent-light hover:text-white transition font-medium"
+                  className="flex items-center gap-1 text-xs text-orange-600 hover:text-orange-700 transition font-bold"
                 >
                   <Sliders className="w-3.5 h-3.5" />
-                  <span>Configure</span>
+                  <span>Configure Hook</span>
                 </button>
               </div>
             </motion.div>
@@ -228,16 +228,16 @@ export default function PlatformsPage() {
       {/* Configuration Modal */}
       <AnimatePresence>
         {configModalOpen && selectedPlatform && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-lg glass-panel bg-navy-800/95 border border-white/10 p-6 rounded-2xl relative shadow-2xl"
+              className="w-full max-w-lg bg-white border border-slate-200 p-6 rounded-2xl relative shadow-2xl"
             >
               <button
                 onClick={() => setConfigModalOpen(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition"
+                className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -250,78 +250,76 @@ export default function PlatformsPage() {
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white">{selectedPlatform.name} Pipeline Settings</h3>
-                  <p className="text-xs text-gray-400">Configure ingestion filters, credentials and sampling rates</p>
+                  <h3 className="text-lg font-bold text-slate-900">{selectedPlatform.name} Hook Parameters</h3>
+                  <p className="text-xs text-slate-500 font-medium">Configure Indian keyword filters, streaming pipelines, and rate thresholds</p>
                 </div>
               </div>
 
               <div className="space-y-4 my-4">
                 <div>
-                  <label className="text-xs font-semibold text-gray-300 block mb-1.5">Stream Keyword Filters</label>
+                  <label className="text-xs font-bold text-slate-700 block mb-1.5">Stream Search & Keyword Operators</label>
                   <input
                     type="text"
-                    defaultValue="#AI, #MachineLearning, #DeepLearning, #IndiaAI, #OpenSource"
-                    className="w-full bg-navy-900 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white focus:border-accent outline-none"
+                    defaultValue="#IndiaAI, #DigitalBharat, #SovereignCompute, #CyberSecurity, #GovTech"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:border-orange-500 outline-none"
                   />
-                  <span className="text-[10px] text-gray-500 mt-1 block">Comma separated tags or search operators</span>
+                  <span className="text-[10px] text-slate-500 mt-1 block">Comma-separated tags for national surveillance monitor</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-semibold text-gray-300 block mb-1.5">Ingestion Mode</label>
-                    <select className="w-full bg-navy-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-accent outline-none">
+                    <label className="text-xs font-bold text-slate-700 block mb-1.5">Ingestion Mode</label>
+                    <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:border-orange-500 outline-none">
                       <option>Real-Time Decahose Stream</option>
-                      <option>Hourly Batch Sampling</option>
                       <option>High-Priority KOL Polling</option>
+                      <option>Hourly Aggregation</option>
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-gray-300 block mb-1.5">Language Filter</label>
-                    <select className="w-full bg-navy-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:border-accent outline-none">
-                      <option>All Languages (Multi-lingual AI)</option>
-                      <option>English + Indic (Hindi/Tamil/Telugu)</option>
+                    <label className="text-xs font-bold text-slate-700 block mb-1.5">Language Filter</label>
+                    <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-900 focus:border-orange-500 outline-none">
+                      <option>Multi-lingual Indic (Hindi/Tamil/Telugu/Eng)</option>
                       <option>English Only</option>
+                      <option>Hindi Only</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-gray-300 block mb-1.5">Webhook Endpoint / Callback</label>
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      readOnly
-                      value={`https://api.socialpulse.ai/v1/webhooks/${selectedPlatform.id}_stream`}
-                      className="w-full bg-navy-900 font-mono text-[11px] text-gray-300 border border-white/10 rounded-xl px-3.5 py-2 select-all outline-none"
-                    />
-                  </div>
+                  <label className="text-xs font-bold text-slate-700 block mb-1.5">National Ingestion Webhook</label>
+                  <input
+                    type="text"
+                    readOnly
+                    value={`https://api.socialpulse.gov.in/v1/streams/${selectedPlatform.id}_decahose`}
+                    className="w-full bg-slate-100 font-mono text-[11px] text-slate-700 border border-slate-200 rounded-xl px-3.5 py-2 select-all outline-none font-bold"
+                  />
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/5">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
                 <button
                   onClick={() => setConfigModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs text-gray-400 hover:text-white transition"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSaveConfig}
                   disabled={savingConfig || saveSuccess}
-                  className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-semibold bg-accent hover:bg-accent-dark text-white transition shadow-glow disabled:opacity-50"
+                  className="flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-bold bg-orange-600 hover:bg-orange-700 text-white transition shadow-sm disabled:opacity-50"
                 >
                   {savingConfig ? (
                     <>
                       <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                      <span>Validating & Saving...</span>
+                      <span>Saving Parameters...</span>
                     </>
                   ) : saveSuccess ? (
                     <>
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Configuration Active!</span>
+                      <span>Stream Active!</span>
                     </>
                   ) : (
-                    <span>Save Pipeline Config</span>
+                    <span>Save Hook Settings</span>
                   )}
                 </button>
               </div>
